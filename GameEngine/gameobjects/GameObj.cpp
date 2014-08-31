@@ -4,7 +4,7 @@
 #include "r3dPCH.h"
 #include "r3d.h"
 
-#include "C:\WarZ\Src\EclipseStudio\Sources\resource.h"
+#include "./../EclipseStudio\Sources\resource.h"
 #include "HShield.h"
 #include "HSUpChk.h"
 #pragma comment(lib,"HShield.lib")
