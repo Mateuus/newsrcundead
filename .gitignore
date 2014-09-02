@@ -3,3 +3,5 @@
 /BrowserLauncher
 /EclipseStudio/Debug
 /EclipseStudio/Release
+/bin
+/EclipseStudio/*.user

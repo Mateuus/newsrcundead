@@ -198,8 +198,8 @@ static void parseCharBackpack(pugi::xml_node xmlItem, wiCharDataFull& w)
 
 		int slot = xmlItem.attribute("s").as_int();
 
-		r3d_assert(slot >= 0 && slot < w.BackpackSize);
-		r3d_assert(w.Items[slot].InventoryID == 0);
+		//r3d_assert(slot >= 0 && slot < w.BackpackSize);
+		//r3d_assert(w.Items[slot].InventoryID == 0);
 		w.Items[slot] = itm;
 
 		xmlItem = xmlItem.next_sibling();
@@ -844,7 +844,8 @@ int CClientUserProfile::ApiBackpackFromInventory(__int64 InventoryID, int GridTo
 		}
 		else
 		{
-			int var = -1;
+			//Codex Fix Temporario
+			/*int var = -1;
 			for(int i=0;i<w.BackpackSize;i++)
 			{
 				if (w.Items[i].InventoryID == 0 && i!=0 && i!=1 && i!=6 && i!=7)
@@ -853,9 +854,9 @@ int CClientUserProfile::ApiBackpackFromInventory(__int64 InventoryID, int GridTo
 					var=i;
 					break;
 				}
-			}
+			}*/
 			// trying to stack not stackable item
-			if (var==-1)
+			//if (var==-1)
 			return 9;
 		}
 	}
