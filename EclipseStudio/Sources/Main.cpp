@@ -1549,7 +1549,7 @@ void game::MainLoop()
 #ifndef FINAL_BUILD
 	case	Menu_AppSelect::bUpdateDB:
 		g_bEditMode = false;
-		UpdateDB("25.202.59.81", "Data/Weapons/itemsDB.xml");
+		UpdateDB("127.0.0.1", "Data/Weapons/itemsDB.xml");
 		MessageBox(0, "Successfully updated English DB!", "Result", MB_OK);
 		break;
 #endif
@@ -1563,10 +1563,10 @@ void game::MainLoop()
 		//}
 
 		// hardcoded IP for now
-		g_serverip->SetString("25.202.59.81");
+		g_serverip->SetString("127.0.0.1");
 
 		// override API settings
-		g_api_ip->SetString("25.202.59.81");
+		g_api_ip->SetString("127.0.0.1");
 
 	case	Menu_AppSelect::bStartGameSVN:
 		g_bEditMode = false;
@@ -1681,7 +1681,7 @@ void UpdateDB(const char* api_addr, const char* out_xml)
 	{
 		CkHttpRequest req;
 		req.UsePost();
-		req.put_Path("/api/php/api_getItemsDB.php");
+		req.put_Path("/Undead/api/php/api_getItemsDB.php");
 		req.AddParam("serverkey", "8B1E58D9-1D8A-4942-A2AB-B6809F0A4CDF");
 
 		CkHttpResponse *resp = 0;
