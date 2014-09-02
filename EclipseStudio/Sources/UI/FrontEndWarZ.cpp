@@ -1432,7 +1432,7 @@ void FrontendWarZ::addClientSurvivor(const wiCharDataFull& slot, int slotIndex)
 	addBackpackItems(slot, slotIndex);
 }
 
-void FrontendWarZ::addBackpackItems(const wiCharDataFull& slot, int slotIndex)
+void FrontendWarZ::addBackpackItems(const wiCharDataFull& slot, int slotIndex)//OK
 {
 	Scaleform::GFx::Value var[8];
 	for (int a = 0; a < slot.BackpackSize; a++)
@@ -3349,6 +3349,71 @@ void FrontendWarZ::eventOpenBackpackSelector(r3dScaleformMovie* pMovie, const Sc
 	gfxMovie.Invoke("_root.api.showChangeBackpack", "");
 }
 
+//tEST
+void FrontendWarZ::reloadBackpack()
+{
+	Scaleform::GFx::Value var[2];
+
+	// reset backpack
+	{
+		gfxMovie.Invoke("_root.api.clearBackpack", "");
+		gfxMovie.Invoke("_root.api.clearBackpacks", "");
+	}
+
+
+	std::vector<uint32_t> uniqueBackpacks; // to filter identical backpack
+
+	int backpackSlotIDInc = 0;
+	// add backpack content info
+	{
+		wiCharDataFull& slot = gUserProfile.ProfileData.ArmorySlots[gUserProfile.SelectedCharID];
+
+		for (int a = 0; a < slot.BackpackSize; a++)
+		{
+			if (slot.Items[a].itemID != 0)
+			{
+				if(std::find<std::vector<uint32_t>::iterator, uint32_t>(uniqueBackpacks.begin(), uniqueBackpacks.end(), slot.Items[a].itemID) != uniqueBackpacks.end())
+					continue;
+
+				const BackpackConfig* bpc = g_pWeaponArmory->getBackpackConfig(slot.Items[a].itemID);
+				if(bpc)
+				{
+					// add backpack info
+					var[0].SetInt(backpackSlotIDInc++);
+					var[1].SetUInt(slot.Items[a].itemID);
+					gfxMovie.Invoke("_root.api.addBackpack", var, 2);
+
+					uniqueBackpacks.push_back(slot.Items[a].itemID);
+				}
+			}
+		}
+	}
+	// add inventory info
+	for(uint32_t i=0; i<gUserProfile.ProfileData.NumItems; ++i)
+	{
+		if(std::find<std::vector<uint32_t>::iterator, uint32_t>(uniqueBackpacks.begin(), uniqueBackpacks.end(), gUserProfile.ProfileData.Inventory[i].itemID) != uniqueBackpacks.end())
+			continue;
+
+		const BackpackConfig* bpc = g_pWeaponArmory->getBackpackConfig(gUserProfile.ProfileData.Inventory[i].itemID);
+		if(bpc)
+		{
+			// add backpack info
+			var[0].SetInt(backpackSlotIDInc++);
+			var[1].SetUInt(gUserProfile.ProfileData.Inventory[i].itemID);
+			gfxMovie.Invoke("_root.api.addBackpack", var, 2);
+
+			uniqueBackpacks.push_back(gUserProfile.ProfileData.Inventory[i].itemID);
+		}
+	}
+
+	int	slot = gUserProfile.SelectedCharID;
+
+	addBackpackItems(gUserProfile.ProfileData.ArmorySlots[slot], slot);
+
+	gfxMovie.Invoke("_root.api.Main.Inventory.showBackpack", "");
+}
+
+
 void FrontendWarZ::eventChangeBackpack(r3dScaleformMovie* pMovie, const Scaleform::GFx::Value* args, unsigned argCount)
 {
 	r3d_assert(argCount == 2);
@@ -3404,6 +3469,7 @@ unsigned int WINAPI FrontendWarZ::as_BackpackChangeThread(void* in_data)
 	This->async_.DelayServerRequest();
 
 	int apiCode = gUserProfile.ApiChangeBackpack(This->mChangeBackpack_inventoryID);
+	gUserProfile.GetProfile();//Test
 	if(apiCode != 0)
 	{
 		This->async_.SetAsyncError(apiCode, gLangMngr.getString("FailedToFindBackpack"));
@@ -3417,7 +3483,7 @@ void FrontendWarZ::OnBackpackChangeSuccess()
 {
 	gfxMovie.Invoke("_root.api.hideInfoMsg", "");
 
-	wiCharDataFull& slot = gUserProfile.ProfileData.ArmorySlots[gUserProfile.SelectedCharID];
+	/*wiCharDataFull& slot = gUserProfile.ProfileData.ArmorySlots[gUserProfile.SelectedCharID];
 	Scaleform::GFx::Value var[11];
 	var[0].SetString(slot.Gamertag);
 	var[1].SetNumber(slot.Health);
@@ -3435,7 +3501,15 @@ void FrontendWarZ::OnBackpackChangeSuccess()
 	addBackpackItems(slot, gUserProfile.SelectedCharID);
 	updateInventoryAndSkillItems();
 
-	updateSurvivorTotalWeight(gUserProfile.SelectedCharID);
+	updateSurvivorTotalWeight(gUserProfile.SelectedCharID);*/
+
+	int	slot = gUserProfile.SelectedCharID;
+
+	addBackpackItems(gUserProfile.ProfileData.ArmorySlots[slot], slot);
+
+	updateInventoryAndSkillItems ();
+
+	updateSurvivorTotalWeight(slot);
 
 	gfxMovie.Invoke("_root.api.changeBackpackSuccess", "");
 }

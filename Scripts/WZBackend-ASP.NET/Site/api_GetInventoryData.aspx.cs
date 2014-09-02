@@ -30,7 +30,7 @@ public partial class api_GetInventoryData : WOApiWebPage
         sqcmd.Parameters.AddWithValue("@in_Var1", Convert.ToInt32(web.Param("Var1")));
         sqcmd.Parameters.AddWithValue("@in_Var2", Convert.ToInt32(web.Param("Var2")));
         sqcmd.Parameters.AddWithValue("@in_Category", Convert.ToInt32(web.Param("Category")));
-        sqcmd.Parameters.AddWithValue("@in_Durability", Convert.ToInt32(web.Param("Durability")));
+      //  sqcmd.Parameters.AddWithValue("@in_Durability", Convert.ToInt32(web.Param("Durability")));
 
         if (!CallWOApi(sqcmd))
             return;
@@ -51,7 +51,7 @@ public partial class api_GetInventoryData : WOApiWebPage
                 string Quantity_2 = reader["Quantity"].ToString();
                 string Var1_2 = reader["Var1"].ToString();
                 string Var2_2 = reader["Var2"].ToString();
-                string Durability_1 = reader["Durability"].ToString();
+               // string Durability_1 = reader["Durability"].ToString();
 
                 xml.Append("<UsersInventory ");
                 xml.Append(xml_attr("InventoryID", InventoryID_2));
@@ -62,7 +62,7 @@ public partial class api_GetInventoryData : WOApiWebPage
                 xml.Append(xml_attr("Quantity", Quantity_2));
                 xml.Append(xml_attr("Var1", Var1_2));
                 xml.Append(xml_attr("Var2", Var2_2));
-                xml.Append(xml_attr("Durability", Durability_1));
+             //   xml.Append(xml_attr("Durability", Durability_1));
                 xml.Append("/>\n");
             }
 

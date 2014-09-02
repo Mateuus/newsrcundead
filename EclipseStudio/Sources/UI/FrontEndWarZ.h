@@ -126,6 +126,7 @@ private:
     void OnLearnSkillSuccess();
 	void OnConvertGDSuccess();
 	void OnChangeOutfitSuccess();
+	void reloadBackpack();
 	int convertvalue;
 	int currentvalue;
 	bool SetCheckbox;

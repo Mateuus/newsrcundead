@@ -122,13 +122,13 @@ public partial class api_GetProfile1 : WOApiWebPage
             int Quantity = Convert.ToInt32(reader["Quantity"]);
             int Var1 = Convert.ToInt32(reader["Var1"]);
             int Var2 = Convert.ToInt32(reader["Var2"]);
-            float Dur = Convert.ToInt32(reader["Durability"]);
+           // float Dur = Convert.ToInt32(reader["Durability"]);
 
             xml.Append("<i ");
             xml.Append(xml_attr("id", InvID));
             xml.Append(xml_attr("itm", ItemID));
             xml.Append(xml_attr("qt", Quantity));
-            xml.Append(xml_attr("dr", Dur));
+            //xml.Append(xml_attr("dr", Dur));
             if (Var1 >= 0) xml.Append(xml_attr("v1", Var1));
             if (Var2 >= 0) xml.Append(xml_attr("v2", Var2));
 
@@ -154,7 +154,7 @@ public partial class api_GetProfile1 : WOApiWebPage
             int Slot = Convert.ToInt32(reader["BackpackSlot"]);
             int Var1 = Convert.ToInt32(reader["Var1"]);
             int Var2 = Convert.ToInt32(reader["Var2"]);
-            float Dur = Convert.ToInt32(reader["Durability"]);
+            //float Dur = Convert.ToInt32(reader["Durability"]);
 
             if (CharID != CurCharID)
             {
@@ -171,7 +171,7 @@ public partial class api_GetProfile1 : WOApiWebPage
             xml.Append(xml_attr("itm", ItemID));
             xml.Append(xml_attr("qt", Quantity));
             xml.Append(xml_attr("s", Slot));
-            xml.Append(xml_attr("dr", Dur));
+           // xml.Append(xml_attr("dr", Dur));
             if (Var1 >= 0) xml.Append(xml_attr("v1", Var1));
             if (Var2 >= 0) xml.Append(xml_attr("v2", Var2));
             xml.Append("/>");
