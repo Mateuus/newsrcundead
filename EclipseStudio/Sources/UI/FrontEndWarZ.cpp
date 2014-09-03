@@ -1086,7 +1086,11 @@ int FrontendWarZ::Update()
 	if(gUserProfile.ProfileData.ArmorySlots[gUserProfile.SelectedCharID].Alive == 0) // dead
 	{
 		// for now, use hard coded revive time
-		int timeToReviveInSec = 600; // DNC (currently set to one hour)
+		int timeToReviveInSec = 300; // DNC (currently set to one hour)
+
+		//Mateuus Premium
+		if (gUserProfile.ProfileData.IsPremium)
+			timeToReviveInSec = 150;
 
 		if (gUserProfile.ProfileData.isDevAccount)
 		{

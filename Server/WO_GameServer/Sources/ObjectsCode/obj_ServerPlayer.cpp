@@ -455,7 +455,17 @@ wiStatsTracking obj_ServerPlayer::AddReward(const wiStatsTracking& in_rwd)
   // adjust player stats
   profile_.ProfileData.GamePoints  += rwd.GP;
   profile_.ProfileData.GameDollars += rwd.GD;
-  loadout_->Stats.XP += rwd.XP;
+
+  //Mateuus Premium
+
+  if (profile_.ProfileData.IsPremium)
+  {
+     loadout_->Stats.XP += rwd.XP*2;
+  }
+ else
+ {
+    loadout_->Stats.XP += rwd.XP;
+ }
 
   return rwd;
 }
@@ -1428,7 +1438,15 @@ bool obj_ServerPlayer::BackpackAddItem(const wiInventoryItem& wi1)
 	{
 		//r3dOutToLog("%s BackpackAddItem %d GameDollars\n", userName, wi1.quantity); CLOG_INDENT;
 
-		profile_.ProfileData.GameDollars += wi1.quantity;
+		//Mateus Premium
+		int gd = wi1.quantity;
+		if (profile_.ProfileData.IsPremium)
+			gd *= 2;
+         
+		profile_.ProfileData.GameDollars += gd;
+
+
+		//profile_.ProfileData.GameDollars += wi1.quantity;
 
 		// report to client
 		PKT_S2C_BackpackAddNew_s n;

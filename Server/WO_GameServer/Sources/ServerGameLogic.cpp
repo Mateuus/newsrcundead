@@ -1078,6 +1078,8 @@ void ServerGameLogic::AddDirectPlayerReward(obj_ServerPlayer* plr, const wiStats
 	if(xp == 0 && gp == 0 && gd == 0)
 		return;
 
+
+
 	r3dOutToLog("reward: %s got %dxp %dgp %dgd RWD_%s\n", plr->userName, xp, gp, gd, rewardName ? rewardName : "");
 
 	// send it to him

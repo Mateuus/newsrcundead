@@ -5704,9 +5704,15 @@ void obj_Player::OnNetPacket(const PKT_S2C_BackpackAddNew_s& n) // ESTE NO ES
 
 	if(n.Item.itemID == 'GOLD')
 	{
+        //Mateuus Premium
+		int gd = n.Item.quantity;
+		if (gUserProfile.ProfileData.IsPremium)
+			gd *= 2;
+
 		gUserProfile.ProfileData.GameDollars += n.Item.quantity;
 		wchar_t tmpStr[64];
 		swprintf(tmpStr, 64, gLangMngr.getString("InfoMsg_DollarsPickedUp"), n.Item.quantity);
+		SoundSys.PlayAndForget(SoundSys.GetEventIDByPath("Sounds/MainMenu GUI/UI_menu_open"), GetPosition()); // pickup sound
 		hudMain->showMessage(tmpStr);
 		return;
 	}
