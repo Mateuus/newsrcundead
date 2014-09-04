@@ -312,7 +312,9 @@ void CMasterServerConfig::AddRentGame(int customerid , const char* name , const 
 	__int64 secs1 = _time64(&secs1);
 	GBGameInfo ginfo;
 	ginfo.mapId = mapid;
-	switch(Region)
+	ginfo.region = GBNET_REGION_US_West;
+	//Mateuus Rent Server
+	/*switch(Region)
 	{
 	case 1 : 
 			ginfo.region = GBNET_REGION_US_West;
@@ -323,7 +325,7 @@ void CMasterServerConfig::AddRentGame(int customerid , const char* name , const 
 	case 2:
 			ginfo.region = GBNET_REGION_US_East;
 			break;
-	}
+	}*/
 	ginfo.enableCrosshair=EnableCrosshair;
 	ginfo.enableSnipers=enableSnipers;
 	ginfo.maxPlayers = slot;
@@ -343,20 +345,20 @@ void CMasterServerConfig::AddRentGame(int customerid , const char* name , const 
 	r3dscpy(ginfo.PasswordGame,pwd);
 	switch(RentalTime)
 	{
-	case 0: // 1 DAY
-		    ginfo.expirein = 86400;
+	case 3: // 3 DAY
+		    ginfo.expirein = 259200;
 			break;
-	case 1: // 1 MOUNT
+	case 7: /// 7 DAY
+		    ginfo.expirein = 604800;
+			break;
+	case 15: // 15 DAY
+		    ginfo.expirein = 1296000;
+			break;
+	case 30: /// 30 DAY
 		    ginfo.expirein = 2592000;
 			break;
-	case 2: // 2 MOUNTS
+	case 60: // 60 DAY
 		    ginfo.expirein = 5184000;
-			break;
-	case 3: // 3 MOUNTS
-		    ginfo.expirein = 7776000;
-			break;
-	case 4: // 6 MOUNTS
-		    ginfo.expirein = 15552000;
 			break;
 	}
 	ginfo.expirein = (int)secs1 + ginfo.expirein+120;

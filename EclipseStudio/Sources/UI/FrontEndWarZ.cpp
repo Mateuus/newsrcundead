@@ -1576,7 +1576,9 @@ void FrontendWarZ::initFrontend()
 	}
 
 	{
-		Scaleform::GFx::Value var[2];
+		//////////////////////////////////////////////////////////////////////////////
+		//Mateuus Rent Server
+		/*Scaleform::GFx::Value var[2];
 		var[0].SetUInt(GBGameInfo::MAPID_WZ_Colorado);
 		var[1].SetString("Colorado");
 		gfxMovie.Invoke("_root.api.addRentServer_MapInfo", var, 2);
@@ -1595,9 +1597,33 @@ void FrontendWarZ::initFrontend()
 
 		var[0].SetInt(2);
 		var[1].SetStringW(gLangMngr.getString("$FR_REGION_SA"));
+		gfxMovie.Invoke("_root.api.addRentServer_RegionInfo", var, 2);*/
+
+		Scaleform::GFx::Value var[2];
+		var[0].SetUInt(GBGameInfo::MAPID_WZ_Colorado);
+		var[1].SetString("US");
+		gfxMovie.Invoke("_root.api.addRentServer_MapInfo", var, 2);
+
+		var[0].SetUInt(GBGameInfo::MAPID_WZ_Cliffside);
+		var[1].SetString("US");
+		gfxMovie.Invoke("_root.api.addRentServer_StrongholdInfo", var, 2);
+
+		var[0].SetInt(0);
+		var[1].SetStringW(gLangMngr.getString("$FR_MAPA_01"));
 		gfxMovie.Invoke("_root.api.addRentServer_RegionInfo", var, 2);
 
-		Scaleform::GFx::Value var3[3];
+		var[0].SetInt(1);
+		var[1].SetStringW(gLangMngr.getString("$FR_MAPA_02"));
+		gfxMovie.Invoke("_root.api.addRentServer_RegionInfo", var, 2);
+
+		var[0].SetInt(2);
+		var[1].SetStringW(gLangMngr.getString("$FR_MAPA_03"));
+		gfxMovie.Invoke("_root.api.addRentServer_RegionInfo", var, 2);
+		//////////////////////////////////////////////////////////////////////////////
+
+		//////////////////////////////////////////////////////////////////////////////
+        //Mateuus RentServer
+		/*Scaleform::GFx::Value var3[3];
 		var3[0].SetInt(30);
 		var3[1].SetString("30");
 		var3[2].SetBoolean(true);
@@ -1627,11 +1653,46 @@ void FrontendWarZ::initFrontend()
 		var3[2].SetBoolean(true);
 
 		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfo", var3, 3);
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfoStronghold", var3, 3);*/
+        
+
+		Scaleform::GFx::Value var3[3];
+		var3[0].SetInt(10);
+		var3[1].SetString("10");
+		var3[2].SetBoolean(true);//Ativado
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfo", var3, 3);
 		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfoStronghold", var3, 3);
+
+		var3[0].SetInt(15);
+		var3[1].SetString("15");
+		var3[2].SetBoolean(true);//Ativado
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfo", var3, 3);
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfoStronghold", var3, 3);
+
+		var3[0].SetInt(30);
+		var3[1].SetString("30");
+		var3[2].SetBoolean(true);//Ativado
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfo", var3, 3);
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfoStronghold", var3, 3);
+
+		var3[0].SetInt(35);
+		var3[1].SetString("35");
+		var3[2].SetBoolean(false);//Desativado
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfo", var3, 3);
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfoStronghold", var3, 3);
+
+		var3[0].SetInt(40);
+		var3[1].SetString("40");
+		var3[2].SetBoolean(false);//Desativado
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfo", var3, 3);
+		gfxMovie.Invoke("_root.api.addRentServer_SlotsInfoStronghold", var3, 3);
+		//////////////////////////////////////////////////////////////////////////////
 
 		//Scaleform::GFx::Value var[2];
 		{
-			Scaleform::GFx::Value var[3];
+		    //////////////////////////////////////////////////////////////////////////////
+			//Mateuus RentServer
+			/*Scaleform::GFx::Value var[3];
 			var[0].SetUInt(0);
 			var[1].SetUInt(1);
 			var[2].SetStringW(gLangMngr.getString("$FR_Store_SingularDay"));
@@ -1655,7 +1716,35 @@ void FrontendWarZ::initFrontend()
 			var[0].SetUInt(4);
 			var[1].SetUInt(6);
 			var[2].SetStringW(gLangMngr.getString("$months"));
+			gfxMovie.Invoke("_root.api.addRentServer_RentInfo", var, 3);*/
+
+			Scaleform::GFx::Value var[3];
+			var[0].SetUInt(3);
+			var[1].SetUInt(3);
+			var[2].SetStringW(gLangMngr.getString("$FR_Store_SingularDay"));
 			gfxMovie.Invoke("_root.api.addRentServer_RentInfo", var, 3);
+
+			var[0].SetUInt(7);
+			var[1].SetUInt(7);
+			var[2].SetStringW(gLangMngr.getString("$FR_Store_SingularDay"));
+			gfxMovie.Invoke("_root.api.addRentServer_RentInfo", var, 3);
+
+			var[0].SetUInt(15);
+			var[1].SetUInt(15);
+			var[2].SetStringW(gLangMngr.getString("$FR_Store_SingularDay"));
+			gfxMovie.Invoke("_root.api.addRentServer_RentInfo", var, 3);
+
+			var[0].SetUInt(30);
+			var[1].SetUInt(30);
+			var[2].SetStringW(gLangMngr.getString("$FR_Store_SingularDay"));
+			gfxMovie.Invoke("_root.api.addRentServer_RentInfo", var, 3);
+
+			var[0].SetUInt(60);
+			var[1].SetUInt(60);
+			var[2].SetStringW(gLangMngr.getString("$FR_Store_SingularDay"));
+			gfxMovie.Invoke("_root.api.addRentServer_RentInfo", var, 3);
+
+			//////////////////////////////////////////////////////////////////////////////
 		}
 		//Scaleform::GFx::Value var[2];
 		var[0].SetInt(0);
@@ -2120,13 +2209,31 @@ void FrontendWarZ::eventRentServer(r3dScaleformMovie* pMovie, const Scaleform::G
 
 	r3dscpy(m_RentGameName,args[5].GetString());
 	r3dscpy(m_RentGamePwd,args[6].GetString());
-	m_RentGameMapid = args[1].GetInt();
+
+    //Mateuus RentServer
+	//m_RentGameMapid = args[1].GetInt();
+	switch(args[2].GetInt())
+	{
+	case 0:
+		   m_RentGameMapid = GBGameInfo::MAPID_WZ_Cliffside;
+		   break;
+	case 1:
+		   m_RentGameMapid = GBGameInfo::MAPID_CaliWood;
+		   break;
+	case 2:
+		   m_RentGameMapid = GBGameInfo::MAPID_Devmap;
+		   break;
+	}
+
+
 	m_RentGameNumPlayers = args[3].GetInt();
 	m_RentGameRentalTime = args[4].GetInt();
 	m_RentGameCustomerID = gUserProfile.CustomerID;
 	m_CrosshairEnable = args[9].GetBool();
 
-	switch(args[2].GetInt())
+	//Mateuus RentServer
+	m_RentGameRegion = GBNET_REGION_US_West;
+	/*switch(args[2].GetInt())
 	{
 	case 0:
 		   m_RentGameRegion = GBNET_REGION_US_West;
@@ -2137,7 +2244,7 @@ void FrontendWarZ::eventRentServer(r3dScaleformMovie* pMovie, const Scaleform::G
 	case 2:
 		   m_RentGameRegion = GBNET_REGION_US_East;
 		   break;
-	}
+	}*/
 
 	Scaleform::GFx::Value var[3];
 	if (args[5].GetString()[0] == 0) // Check if you write name of server
@@ -2186,35 +2293,35 @@ void FrontendWarZ::eventRentServer(r3dScaleformMovie* pMovie, const Scaleform::G
 	int RentalTime = args[4].GetInt();
 	int price = 0;
 
-    if(RentalTime == 0 && NumPlayers == 30)	price = 1500;
-	else if(RentalTime == 0 && NumPlayers == 50)	price = 2376;
-	else if(RentalTime == 0 && NumPlayers == 70)	price = 2772;
-	else if(RentalTime == 0 && NumPlayers == 100)	price = 3970;
-	else if(RentalTime == 0 && NumPlayers == 250)	price = 4910;
+    if(RentalTime == 3 && NumPlayers == 10)	price = 6000;// R$ 6,00 Reias
+	else if(RentalTime == 3 && NumPlayers == 15)	price = 7500;//  R$ 7,50  Reais
+	else if(RentalTime == 3 && NumPlayers == 30)	price = 10000;// R$ 10,00 Reias
+	else if(RentalTime == 3 && NumPlayers == 35)	price = 5000;//  R$ 13,00  Reais
+	else if(RentalTime == 3 && NumPlayers == 40)	price = 10000;// R$ 16,00 Reais
 
-    else if(RentalTime == 1 && NumPlayers == 30)	price = 4100;
-	else if(RentalTime == 1 && NumPlayers == 50)	price = 7920;
-	else if(RentalTime == 1 && NumPlayers == 70)	price = 9240;
-	else if(RentalTime == 1 && NumPlayers == 100)	price = 13200;
-	else if(RentalTime == 1 && NumPlayers == 250)	price = 17520;
+    else if(RentalTime == 7 && NumPlayers == 10)	price = 13000;// R$ 13,00 Reais
+	else if(RentalTime == 7 && NumPlayers == 15)	price = 17000;// R$ 17,00 Reais
+	else if(RentalTime == 7 && NumPlayers == 30)	price = 22000;// R$ 22,00 Reais
+	else if(RentalTime == 7 && NumPlayers == 35)	price = 7500;//  R$ 7,50  Reais
+	else if(RentalTime == 7 && NumPlayers == 40)	price = 15000;// R$ 15,00 Reais
 
-    else if(RentalTime == 2 && NumPlayers == 30)	price = 8600;
-	else if(RentalTime == 2 && NumPlayers == 50)	price = 15840;
-	else if(RentalTime == 2 && NumPlayers == 70)	price = 18480;
-	else if(RentalTime == 2 && NumPlayers == 100)	price = 26400;
-	else if(RentalTime == 2 && NumPlayers == 250)	price = 32300;
+    else if(RentalTime == 15 && NumPlayers == 10)	price = 15000;// R$ 15,00 Reais
+	else if(RentalTime == 15 && NumPlayers == 15)	price = 18500;// R$ 18,50 Reais
+	else if(RentalTime == 15 && NumPlayers == 30)	price = 23000;// R$ 23,00 Reais
+	else if(RentalTime == 15 && NumPlayers == 35)	price = 20000;// R$ 20,00 Reais
+	else if(RentalTime == 15 && NumPlayers == 40)	price = 40000;// R$ 40,00 Reais
 
-    else if(RentalTime == 3 && NumPlayers == 30)	price = 12320;
-	else if(RentalTime == 3 && NumPlayers == 50)	price = 21384;
-	else if(RentalTime == 3 && NumPlayers == 70)	price = 24948;
-	else if(RentalTime == 3 && NumPlayers == 100)	price = 35640;
-	else if(RentalTime == 3 && NumPlayers == 250)	price = 41318;
+    else if(RentalTime == 30 && NumPlayers == 10)	price = 18500;// R$ 18,50 Reais
+	else if(RentalTime == 30 && NumPlayers == 15)	price = 23000;// R$ 23,00 Reais
+	else if(RentalTime == 30 && NumPlayers == 30)	price = 30000;// R$ 30,00 Reais
+	else if(RentalTime == 30 && NumPlayers == 35)	price = 35640;// R$ 35,64 Reais
+	else if(RentalTime == 30 && NumPlayers == 40)	price = 50000;// R$ 50,00 Reais
 
-    else if(RentalTime == 4 && NumPlayers == 30)	price = 21900;
-	else if(RentalTime == 4 && NumPlayers == 50)	price = 32620;
-	else if(RentalTime == 4 && NumPlayers == 70)	price = 41410;
-	else if(RentalTime == 4 && NumPlayers == 100)	price = 59312;
-	else if(RentalTime == 4 && NumPlayers == 250)	price = 64730;
+    else if(RentalTime == 60 && NumPlayers == 10)	price = 20500;// R$ 20,50 Reais
+	else if(RentalTime == 60 && NumPlayers == 15)	price = 26500;// R$ 26,50 Reais
+	else if(RentalTime == 60 && NumPlayers == 30)	price = 58000;// R$ 58,00 Reais
+	else if(RentalTime == 60 && NumPlayers == 35)	price = 45000;// R$ 45,00 Reais
+	else if(RentalTime == 60 && NumPlayers == 40)	price = 65000;// R$ 15,00 Reais
 
 	if (gUserProfile.ProfileData.GamePoints<price) //Check if have GC
 	{
@@ -2323,6 +2430,7 @@ void FrontendWarZ::OnMyServerListReceived()
 			sprintf(expirein,"%d HRS",ginfo.DataExpire);
 			varss[7].SetString(expirein);
 			//r3dOutToLog("######## MapID %i - ginfo.gameServerId %i\n",ginfo.mapId,ginfo.gameServerId);
+			//Mateuus RentServer
 			switch(ginfo.mapId)
 			{
 			case 2:
@@ -2333,6 +2441,16 @@ void FrontendWarZ::OnMyServerListReceived()
 				
 					varss[8].SetString("STRONGHOLD");
 					varss[9].SetString("CLIFFSIDE");
+					break;
+			case 5:
+				
+					varss[8].SetString("GAMEWORLD");
+					varss[9].SetString("DEVMAP");
+					break;
+			case 6:
+				
+					varss[8].SetString("GAMEWORLD");
+					varss[9].SetString("CALIWOOD");
 					break;
 			}
 
@@ -2474,35 +2592,36 @@ void FrontendWarZ::eventRentServerUpdatePrice(r3dScaleformMovie* pMovie, const S
 	int RentalTime = args[4].GetInt();
 	int price = 0;
 	//r3dOutToLog("######## RentalTime == %i && NumPlayers == %i\n",RentalTime,NumPlayers);
-    if(RentalTime == 0 && NumPlayers == 30)	price = 1500;
-	else if(RentalTime == 0 && NumPlayers == 50)	price = 2376;
-	else if(RentalTime == 0 && NumPlayers == 70)	price = 2772;
-	else if(RentalTime == 0 && NumPlayers == 100)	price = 3970;
-	else if(RentalTime == 0 && NumPlayers == 250)	price = 4910;
 
-    else if(RentalTime == 1 && NumPlayers == 30)	price = 4100;
-	else if(RentalTime == 1 && NumPlayers == 50)	price = 7920;
-	else if(RentalTime == 1 && NumPlayers == 70)	price = 9240;
-	else if(RentalTime == 1 && NumPlayers == 100)	price = 13200;
-	else if(RentalTime == 1 && NumPlayers == 250)	price = 17520;
+    if(RentalTime == 3 && NumPlayers == 10)	price = 6000;// R$ 6,00 Reias
+	else if(RentalTime == 3 && NumPlayers == 15)	price = 7500;//  R$ 7,50  Reais
+	else if(RentalTime == 3 && NumPlayers == 30)	price = 10000;// R$ 10,00 Reias
+	else if(RentalTime == 3 && NumPlayers == 35)	price = 5000;//  R$ 13,00  Reais
+	else if(RentalTime == 3 && NumPlayers == 40)	price = 10000;// R$ 16,00 Reais
 
-    else if(RentalTime == 2 && NumPlayers == 30)	price = 8600;
-	else if(RentalTime == 2 && NumPlayers == 50)	price = 15840;
-	else if(RentalTime == 2 && NumPlayers == 70)	price = 18480;
-	else if(RentalTime == 2 && NumPlayers == 100)	price = 26400;
-	else if(RentalTime == 2 && NumPlayers == 250)	price = 32300;
+    else if(RentalTime == 7 && NumPlayers == 10)	price = 13000;// R$ 13,00 Reais
+	else if(RentalTime == 7 && NumPlayers == 15)	price = 17000;// R$ 17,00 Reais
+	else if(RentalTime == 7 && NumPlayers == 30)	price = 22000;// R$ 22,00 Reais
+	else if(RentalTime == 7 && NumPlayers == 35)	price = 7500;//  R$ 7,50  Reais
+	else if(RentalTime == 7 && NumPlayers == 40)	price = 15000;// R$ 15,00 Reais
 
-    else if(RentalTime == 3 && NumPlayers == 30)	price = 12320;
-	else if(RentalTime == 3 && NumPlayers == 50)	price = 21384;
-	else if(RentalTime == 3 && NumPlayers == 70)	price = 24948;
-	else if(RentalTime == 3 && NumPlayers == 100)	price = 35640;
-	else if(RentalTime == 3 && NumPlayers == 250)	price = 41318;
+    else if(RentalTime == 15 && NumPlayers == 10)	price = 15000;// R$ 15,00 Reais
+	else if(RentalTime == 15 && NumPlayers == 15)	price = 18500;// R$ 18,50 Reais
+	else if(RentalTime == 15 && NumPlayers == 30)	price = 23000;// R$ 23,00 Reais
+	else if(RentalTime == 15 && NumPlayers == 35)	price = 20000;// R$ 20,00 Reais
+	else if(RentalTime == 15 && NumPlayers == 40)	price = 40000;// R$ 40,00 Reais
 
-    else if(RentalTime == 4 && NumPlayers == 30)	price = 21900;
-	else if(RentalTime == 4 && NumPlayers == 50)	price = 32620;
-	else if(RentalTime == 4 && NumPlayers == 70)	price = 41410;
-	else if(RentalTime == 4 && NumPlayers == 100)	price = 59312;
-	else if(RentalTime == 4 && NumPlayers == 250)	price = 64730;
+    else if(RentalTime == 30 && NumPlayers == 10)	price = 18500;// R$ 18,50 Reais
+	else if(RentalTime == 30 && NumPlayers == 15)	price = 23000;// R$ 23,00 Reais
+	else if(RentalTime == 30 && NumPlayers == 30)	price = 30000;// R$ 30,00 Reais
+	else if(RentalTime == 30 && NumPlayers == 35)	price = 35640;// R$ 35,64 Reais
+	else if(RentalTime == 30 && NumPlayers == 40)	price = 50000;// R$ 50,00 Reais
+
+    else if(RentalTime == 60 && NumPlayers == 10)	price = 20500;// R$ 20,50 Reais
+	else if(RentalTime == 60 && NumPlayers == 15)	price = 26500;// R$ 26,50 Reais
+	else if(RentalTime == 60 && NumPlayers == 30)	price = 58000;// R$ 58,00 Reais
+	else if(RentalTime == 60 && NumPlayers == 35)	price = 45000;// R$ 45,00 Reais
+	else if(RentalTime == 60 && NumPlayers == 40)	price = 65000;// R$ 15,00 Reais
 
 	Scaleform::GFx::Value var[3];
 	var[0].SetInt(price);
