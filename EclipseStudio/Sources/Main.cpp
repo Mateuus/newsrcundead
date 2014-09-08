@@ -1559,14 +1559,14 @@ void game::MainLoop()
 		//if(strstr(__r3dCmdLine, "-ffgrtvzdf") == NULL)
 		//{
 		//	// hardcoded IP for now
-		//	g_serverip->SetString("25.202.59.81");
+		//	g_serverip->SetString("167.114.32.63");
 		//}
 
 		// hardcoded IP for now
-		g_serverip->SetString("127.0.0.1");
+		g_serverip->SetString("167.114.32.63");
 
 		// override API settings
-		g_api_ip->SetString("127.0.0.1");
+		g_api_ip->SetString("167.114.32.63");
 
 	case	Menu_AppSelect::bStartGameSVN:
 		g_bEditMode = false;
@@ -1681,7 +1681,7 @@ void UpdateDB(const char* api_addr, const char* out_xml)
 	{
 		CkHttpRequest req;
 		req.UsePost();
-		req.put_Path("/Undead/api/php/api_getItemsDB.php");
+		req.put_Path("/conexao/api/php/api_getItemsDB.php");
 		req.AddParam("serverkey", "8B1E58D9-1D8A-4942-A2AB-B6809F0A4CDF");
 
 		CkHttpResponse *resp = 0;

@@ -210,7 +210,7 @@ void HUDVault::updateInventoryAndSkillItems()
 	r3dOutToLog("Show Inventory Items\n");
     Scaleform::GFx::Value var[7];
 
-	char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+	char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 	CWOBackendReq req("api_GetInventoryData.aspx");
 	req.AddSessionInfo(plr->CustomerID, Session);
 	req.AddParam("skey1",  g_ServerApiKey);
@@ -537,7 +537,7 @@ void HUDVault::Update()
 	{
         obj_Player* plr = gClientLogic().localPlayer_;
 	    r3d_assert(plr);
-		/*char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+		/*char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 		CWOBackendReq req("api_GetInventoryData.aspx");
 		req.AddSessionInfo(plr->CustomerID, Session);
 		req.AddParam("skey1",  g_ServerApiKey);
@@ -578,7 +578,7 @@ void HUDVault::Update()
 	{
         obj_Player* plr = gClientLogic().localPlayer_;
 	    r3d_assert(plr);
-		char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+		char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 		CWOBackendReq req("api_GetInventoryData.aspx");
 		req.AddSessionInfo(plr->CustomerID, Session);
 		req.AddParam("skey1",  g_ServerApiKey);

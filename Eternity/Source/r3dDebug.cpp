@@ -261,14 +261,14 @@ void r3dThreadEntryHelper(threadEntry_fn fn, DWORD in)
 		memset(&info, 0, sizeof(CR_INSTALL_INFOW));  
 		info.cb = sizeof(CR_INSTALL_INFOW);
 #ifdef FINAL_BUILD
-		info.pszAppName = L"WarZ";
+		info.pszAppName = L"Undead Brasil";
 #else
 		info.pszAppName = L"Studio";
 #endif
 		info.pszAppVersion = L"1.0";
 		info.pszEmailTo = NULL;
 		
-		info.pszUrl = L"https://localhost/Undead/api/php/api_CrashRpt.php";
+		info.pszUrl = L"https://167.114.32.63/conexao/api/php/api_CrashRpt.php";
 		
 		info.pszCrashSenderPath = NULL;
 		info.pfnCrashCallback = &r3dCrashRptCallback;
@@ -281,7 +281,7 @@ void r3dThreadEntryHelper(threadEntry_fn fn, DWORD in)
 		//we should not restart app, as GNA using command line to pass login info
 		//info.dwFlags |= CR_INST_APP_RESTART;
 		//info.pszRestartCmdLine   = __r3dCmdLine; 
-		info.pszPrivacyPolicyURL = L"https://localhost/PrivacyPolicy_WarZ.htm";
+		info.pszPrivacyPolicyURL = L"https://167.114.32.63/conexao/PrivacyPolicy_Undead.htm";
 		info.pszLangFilePath     = langFile;
 
 		int res = crInstallW(&info);
