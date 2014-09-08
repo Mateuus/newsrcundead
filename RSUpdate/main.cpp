@@ -986,7 +986,8 @@ static void drawLoginButtons(CUpdater& updater)
         return;
       }
     
-      updater.status_ = CUpdater::STATUS_NeedRegister;
+      //updater.status_ = CUpdater::STATUS_NeedRegister;
+	  ShellExecute(NULL, "open", gLauncherConfig.accountRegisterURL.c_str(), "", NULL, SW_SHOW);
     }
   }
   

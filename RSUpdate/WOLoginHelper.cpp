@@ -60,7 +60,7 @@ void CLoginHelper::DoLogin()
 	CWOBackendReq req("api_Login.aspx");
 	req.AddParam("username", username);
 	req.AddParam("password", passwd);
-	req.AddParam("serverkey", "rJFhzL01360bPQZqU11FxZ589o5Eb6dr");
+	req.AddParam("serverkey", "a5gfd4u8df1jhjs47ws86F");
 	req.AddParam("computerid", hardwareid);
 	req.AddParam("mac", getMAC());
 
@@ -140,7 +140,7 @@ void CLoginHelper::SaveUserName()
 	HKEY hKey;
 	int hr;
 	hr = RegCreateKeyEx(HKEY_CURRENT_USER, 
-		"Software\\Tilcon Network\\DoomMMO", 
+		"Software\\Undead Games\\Undead", 
 		0, 
 		NULL,
 		REG_OPTION_NON_VOLATILE, 
@@ -163,7 +163,7 @@ bool CLoginHelper::LoadUserName()
 	HKEY hKey;
 	int hr;
 	hr = RegOpenKeyEx(HKEY_CURRENT_USER, 
-		"Software\\Tilcon Network\\DoomMMO", 
+		"Software\\Undead Games\\Undead", 
 		0, 
 		KEY_ALL_ACCESS, 
 		&hKey);
@@ -202,7 +202,7 @@ void CLoginHelper::CreateComputerToken()
     HKEY hKey;
     int hr;
     hr = RegCreateKeyEx(HKEY_CURRENT_USER, 
-        "Software\\Tilcon Network\\DoomMMO", 
+        "Software\\Undead Games\\Undead", 
         0, 
         NULL,
         REG_OPTION_NON_VOLATILE, 

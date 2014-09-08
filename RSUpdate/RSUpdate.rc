@@ -137,14 +137,14 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "Comments", "http://forum.doom-mmo.com/"
-            VALUE "CompanyName", "Tilcon Network"
-            VALUE "FileDescription", "DoomMMOLauncher"
+            VALUE "Comments", "http://www.undeadbrasil.com/"
+            VALUE "CompanyName", "Undead Games"
+            VALUE "FileDescription", "UndeadLauncher"
             VALUE "FileVersion", "1.0.0.1"
             VALUE "InternalName", "RSUpdate.exe"
-            VALUE "LegalCopyright", "(c) Tilcon Network.  All rights reserved."
+            VALUE "LegalCopyright", "(c) Undead Games.  All rights reserved."
             VALUE "OriginalFilename", "RSUpdate.exe"
-            VALUE "ProductName", "DoomMMOLauncher"
+            VALUE "ProductName", "UndeadLauncher"
             VALUE "ProductVersion", "1.0.0.1"
         END
     END

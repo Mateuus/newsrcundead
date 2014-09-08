@@ -8,12 +8,14 @@ CLauncherConfig gLauncherConfig;
 
 CLauncherConfig::CLauncherConfig()
 {
+	/*
 	const char* configFile = "Launcher.cfg";
 	const char* group      = "Launcher";
 
 	if(_access(configFile, 4) != 0) {
 //	r3dError("can't open config file %s", configFile);
 	}
+	
 
 	serialBuyURL = r3dReadCFG_S(configFile, group, "serialBuyURL", "http://www.doom-mmo.com");
 	serialExpiredBuyURL = r3dReadCFG_S(configFile, group, "serialExpiredBuyURL", "http://www.doom-mmo.com");
@@ -66,22 +68,23 @@ CLauncherConfig::CLauncherConfig()
 
 	serverInfoURL = r3dReadCFG_S(configFile, group, "serverInfoURL",
 		"http://25.202.59.81/api_getserverinfo.xml");
+	*/
 
 	//***************
 	// Manual Config
 	//***************
-	serialBuyURL = "http://www.doom-mmo.com/";
-	serialExpiredBuyURL = "http://www.doom-mmo.com/";
+	serialBuyURL = "http://www.undeadbrasil.com/";
+	serialExpiredBuyURL = "http://www.undeadbrasil.com/";
 
 	accountForgotPasswordURL = "http://www.forum.doom-mmo.com/index.php?/forum/13-support/";
-	//accountRegisterURL = "http://www.forum.doom-mmo.com/index.php?app=core&module=global&section=register";
+	accountRegisterURL = "http://www.undeadbrasil.com/?pagina=cadastro";
 	//accountRegisterURL = "DoCreateAcc()";//test
 
-	myAccountURL = "http://www.forum.doom-mmo.com/index.php?app=core&module=global&section=register";
-	forumsURL = "http://forum.doom-mmo.com/";
+	myAccountURL = "http://www.undeadbrasil.com/";
+	forumsURL =  "http://forum.undeadbrasil.com/";
 	supportURL = "http://www.forum.doom-mmo.com/index.php?/forum/13-support/";
 	youtubeURL = "http://youtube.com/";
-	facebookURL = "http://facebook.com/";
+	facebookURL = "https://www.facebook.com/equipeundeadbrasil";
 	twitterURL = "http://twitter.com/";
 
 	accountUnknownStatusMessage = "Unknown account status, please contact support@localhost";
@@ -94,18 +97,18 @@ CLauncherConfig::CLauncherConfig()
 	accountCreateEmailTakenMessage = "There is already registered account with that email!\nPlease note that you must use unique email per The War Z account";
 	accountCreateInvalidSerialMessage = "Serial Key is not valid after Serial Key Check\ncontact support@localhost";
 
-	webAPIDomainIP = "25.202.59.81";
-	webAPIDomainBaseURL = "/api/";
+	webAPIDomainIP = "167.114.32.6";
+	webAPIDomainBaseURL = "/conexao/api/";
 	webAPIDomainPort = 80;
 	webAPIDomainUseSSL = false;
 
-	ToSURL = "http://25.202.59.81/other/EULA.rtf";
-	EULAURL = "http://25.202.59.81/other/TOS.rtf";
+	ToSURL =  "http://undeadbrasil.com/conexao/other/eula-en.htm";
+	EULAURL = "http://undeadbrasil.com/conexao/other/eula-en.rtf";
 
-	updateGameDataURL = "http://25.202.59.81/wz/wz.xml";
-	updateLauncherDataURL = "http://25.202.59.81/wz/updater/woupd.xml";
-	updateLauncherDataHostURL = "http://25.202.59.81/wz/updater/";
-	serverInfoURL = "http://25.202.59.81/api_getserverinfo1.xml";
+	updateGameDataURL = "http://167.114.32.6/conexao/wz/wz.xml";
+	updateLauncherDataURL = "http://167.114.32.6/conexao/wz/updater/woupd.xml";
+	updateLauncherDataHostURL = "http://167.114.32.6/conexao/wz/updater/";
+	serverInfoURL = "http://167.114.32.6/conexao/api_getserverinfo1.xml";
    
 	#define CHECK_I(xx) if(xx == 0)  r3dError("missing %s value", #xx);
 	#define CHECK_S(xx) if(xx == "") r3dError("missing %s value", #xx);

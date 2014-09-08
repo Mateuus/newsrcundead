@@ -9,6 +9,7 @@ public:
 	std::string serialExpiredBuyURL;
 
 	std::string accountForgotPasswordURL;
+	std::string accountRegisterURL;
 
 	std::string myAccountURL;
 	std::string forumsURL;
