@@ -42,7 +42,7 @@ CSupervisorConfig::CSupervisorConfig()
   webAPIDomainBaseURL_ = r3dReadCFG_S(configFile, group, "webAPIDomainBaseURL", "/Undead/api/");
   webAPIDomainPort_ = r3dReadCFG_I(configFile, group, "webAPIDomainPort", 80);
   webAPIDomainUseSSL_ = r3dReadCFG_I(configFile, group, "webAPIDomainUseSSL", 0) ? true : false;
-  webAPIServerKey_ = r3dReadCFG_S(configFile, group, "webAPIServerKey", "bvx425698dg6GsnxwedszF");
+  webAPIServerKey_ = r3dReadCFG_S(configFile, group, "webAPIServerKey", "a5gfd4u8df1jhjs47ws86F");
 
   #define CHECK_I(xx) if(xx == 0)  r3dError("missing %s value", #xx);
   #define CHECK_S(xx) if(xx == "") r3dError("missing %s value", #xx);

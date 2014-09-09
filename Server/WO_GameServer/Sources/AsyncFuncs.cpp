@@ -10,7 +10,7 @@
 
 #include "../../EclipseStudio/Sources/backend/WOBackendAPI.h"
 
-char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 
 CAsyncApiMgr*	g_AsyncApiMgr = NULL;
 

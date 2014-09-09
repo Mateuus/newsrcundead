@@ -2469,7 +2469,7 @@ int ServerGameLogic::Cmd_TeleportToPlayerMe(obj_ServerPlayer* plr, const char* c
 }
 void ServerGameLogic::RemoveDBSafelock(obj_ServerPlayer* plr,int SafeLockID, int ItemID, int Quantity, int Var1, int Var2, int ServerGameID)
 {
-	char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+	char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 	CWOBackendReq req("api_RemoveSafelockDATA.aspx");
 	req.AddSessionInfo(plr->profile_.CustomerID, plr->profile_.SessionID);
 	req.AddParam("skey1",  g_ServerApiKey);
@@ -2564,7 +2564,7 @@ bool ServerGameLogic::WriteDBSafelock(int myID, int SafeID, int itemID, int ExpS
 	if (!fromPlr)
 		return false;
 
-	char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+	char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 	CWOBackendReq req("api_SrvSafeLock.aspx");
 	req.AddSessionInfo(fromPlr->profile_.CustomerID, fromPlr->profile_.SessionID);
 	req.AddParam("skey1",  g_ServerApiKey);

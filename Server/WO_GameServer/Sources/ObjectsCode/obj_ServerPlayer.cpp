@@ -1966,7 +1966,7 @@ void obj_ServerPlayer::OnNetPacket(const PKT_C2S_PlayerRemoveAttachment_s& n)
 			{
 				//loadout_->Items[a].Durability = 100;
 
-				char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+				char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 				CWOBackendReq req("api_GetInventoryData.aspx");
 				req.AddSessionInfo(profile_.CustomerID, profile_.SessionID);
 				req.AddParam("skey1",  g_ServerApiKey);
@@ -2003,7 +2003,7 @@ void obj_ServerPlayer::OnNetPacket(const PKT_S2C_RepairWeapon_s& n)
 
 		//wpn->getPlayerItem().Durability = 100;
 
-		char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+		char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 		CWOBackendReq req("api_GetInventoryData.aspx");
 		req.AddSessionInfo(profile_.CustomerID, profile_.SessionID);
 		req.AddParam("skey1",  g_ServerApiKey);
@@ -2995,7 +2995,7 @@ void obj_ServerPlayer::OnNetPacket(const PKT_C2S_VaultBackpackToInv_s& n) // de 
 		DoRemoveSafeLockItems(n.m_gridFrom,RemoveQnt,n.Quantity);
 		gServerLogic.ApiPlayerUpdateChar(this);
 
-		char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+		char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 		CWOBackendReq req("api_GetInventoryData.aspx");
 		req.AddSessionInfo(profile_.CustomerID, profile_.SessionID);
 		req.AddParam("skey1",  g_ServerApiKey);
@@ -3066,7 +3066,7 @@ void obj_ServerPlayer::OnNetPacket(const PKT_C2S_SafelockData_s& n)
 		{
 			wiInventoryItem item = loadout_->Items[n.itemIDorGrid];
 
-			char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+			char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 			CWOBackendReq req("api_SrvSafeLock.aspx");
 			req.AddSessionInfo(profile_.CustomerID, profile_.SessionID);
 			req.AddParam("skey1",  g_ServerApiKey);
@@ -3110,7 +3110,7 @@ void obj_ServerPlayer::OnNetPacket(const PKT_C2S_SafelockData_s& n)
 		{
 			r3dOutToLog("#### ItemID for move: %i\n", n.itemIDorGrid);
 
-			char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+			char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 			CWOBackendReq req("api_RemoveSafelockDATA.aspx");
 			req.AddSessionInfo(profile_.CustomerID, profile_.SessionID);
 			req.AddParam("skey1",  g_ServerApiKey);
@@ -3346,7 +3346,7 @@ void obj_ServerPlayer::OnNetPacket(const PKT_C2S_SafelockData_s& n)
 
 							obj_ServerPlayer* plr = (obj_ServerPlayer*)target;
 
-							char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+							char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 							CWOBackendReq req("api_ChangePassSafeLock.aspx");
 							req.AddSessionInfo(plr->profile_.CustomerID, plr->profile_.SessionID);
 							req.AddParam("skey1",  g_ServerApiKey);
@@ -3748,7 +3748,7 @@ void obj_ServerPlayer::OnNetPacket(const PKT_C2S_FallingDamage_s& n)
 void obj_ServerPlayer::OnNetPacket(const PKT_C2S_BuyItemReq_s& n)
 {
 
-	char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+	char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 	CWOBackendReq req("api_GetItemQuantityBuy.aspx");
 	req.AddSessionInfo(profile_.CustomerID, profile_.SessionID);
 	req.AddParam("skey1",  g_ServerApiKey);

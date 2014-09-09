@@ -272,7 +272,7 @@ void CMasterServerConfig::DeleteRentServer(int gameServerId)
 		uint32_t SesionID = xmlSafelock.attribute("SesionID").as_uint();
 			if (gameServerId == gameServerId2)
 			{
-				char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+				char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 				CWOBackendReq req("api_SrvRentGame.aspx");
 				req.AddSessionInfo(CustomerID, SesionID);
 				req.AddParam("skey1",  g_ServerApiKey);
@@ -363,7 +363,7 @@ void CMasterServerConfig::AddRentGame(int customerid , const char* name , const 
 	}
 	ginfo.expirein = (int)secs1 + ginfo.expirein+120;
 
-	char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+	char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 	CWOBackendReq req("api_SrvRentGame.aspx");
 	req.AddSessionInfo(customerid, SesionID);
 	req.AddParam("skey1",  g_ServerApiKey);
@@ -405,7 +405,7 @@ void CMasterServerConfig::expired(int gameServerId)
 }
 void CMasterServerConfig::SetRentPwd(int gameServerId, const char* pwd, int customerid, int SesionID, bool EnableCrosshair, bool enableSnipers)
 {
-	char* g_ServerApiKey = "bvx425698dg6GsnxwedszF";
+	char* g_ServerApiKey = "a5gfd4u8df1jhjs47ws86F";
 	CWOBackendReq req("api_SrvRentGame.aspx");
 	req.AddSessionInfo(customerid, SesionID);
 	req.AddParam("skey1",  g_ServerApiKey);
