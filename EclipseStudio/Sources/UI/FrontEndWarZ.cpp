@@ -4359,7 +4359,7 @@ void FrontendWarZ::eventStorePurchaseGP(r3dScaleformMovie* pMovie, const Scalefo
 	// opening website for buy GC, need make link
 	const wiCharDataFull& slot1 = gUserProfile.ProfileData.ArmorySlots[gUserProfile.SelectedCharID];
 	char WebSite[512];
-	sprintf(WebSite,"http://167.114.32.63/conexao/php/BuyGD.php?NamePlayer=%s&CustomerID=%i&convertGD=%.2f&convertGP=%i&email=%s",slot1.Gamertag,gUserProfile.CustomerID,(float)currentvalue/100,convertvalue,gUserProfile.email);
+	sprintf(WebSite,"http://127.0.0.1/conexao/php/BuyGD.php?NamePlayer=%s&CustomerID=%i&convertGD=%.2f&convertGP=%i&email=%s",slot1.Gamertag,gUserProfile.CustomerID,(float)currentvalue/100,convertvalue,gUserProfile.email);
 	
 	ShellExecute(0, 0, WebSite, 0, 0 , SW_SHOW );
 

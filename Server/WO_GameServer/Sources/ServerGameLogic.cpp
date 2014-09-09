@@ -2591,6 +2591,7 @@ bool ServerGameLogic::WriteDBSafelock(int myID, int SafeID, int itemID, int ExpS
 	req.AddParam("GameServerID", ServerGameID);
 	req.AddParam("CustomerID", fromPlr->profile_.CustomerID);
 	//req.AddParam("Durability", 0);
+
 	
 	// issue
 	if(!req.Issue())
@@ -2600,6 +2601,7 @@ bool ServerGameLogic::WriteDBSafelock(int myID, int SafeID, int itemID, int ExpS
 		return false;
 	}
 
+	r3dOutToLog("!!!! SaveSafeLock OK, code: %d\n", req.resultCode_);
 	return true;
 }
 

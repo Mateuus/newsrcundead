@@ -39,7 +39,7 @@ CSupervisorConfig::CSupervisorConfig()
   uploadLogs_ = r3dReadCFG_I(configFile, group, "uploadLogs", 0);
 
   webAPIDomainIP_ = r3dReadCFG_S(configFile, group, "webAPIDomainIP", "127.0.0.1");
-  webAPIDomainBaseURL_ = r3dReadCFG_S(configFile, group, "webAPIDomainBaseURL", "/Undead/api/");
+  webAPIDomainBaseURL_ = r3dReadCFG_S(configFile, group, "webAPIDomainBaseURL", "/conexao/api/");
   webAPIDomainPort_ = r3dReadCFG_I(configFile, group, "webAPIDomainPort", 80);
   webAPIDomainUseSSL_ = r3dReadCFG_I(configFile, group, "webAPIDomainUseSSL", 0) ? true : false;
   webAPIServerKey_ = r3dReadCFG_S(configFile, group, "webAPIServerKey", "a5gfd4u8df1jhjs47ws86F");

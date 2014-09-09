@@ -65,7 +65,7 @@ static bool downloadLootBoxData()
 
 	CkHttpRequest req;
 	req.UsePost();
-	req.put_Path("/Undead/api/php/api_GetLootBoxConfig.php");
+	req.put_Path("/conexao/api/php/api_GetLootBoxConfig.php");
 	req.AddParam("serverkey", "9F179EB9-C74E-4933-85B5-EB135E16F5EF");
 
 	CkHttpResponse* resp = http.SynchronousRequest("127.0.0.1", 80, false, req);
