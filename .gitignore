@@ -6,3 +6,9 @@
 /bin
 /EclipseStudio/*.user
 /RSUpdate/Release
+/Eternity/Debug_NoCrashRpt
+/Eternity/Debug_Server
+/Eternity/lib
+/Eternity/Release
+/Eternity/Release_NoCrashRpt
+/Eternity/Release_Server
