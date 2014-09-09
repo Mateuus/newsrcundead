@@ -76,13 +76,13 @@ CLauncherConfig::CLauncherConfig()
 	serialBuyURL = "http://www.undeadbrasil.com/";
 	serialExpiredBuyURL = "http://www.undeadbrasil.com/";
 
-	accountForgotPasswordURL = "http://www.forum.doom-mmo.com/index.php?/forum/13-support/";
+	accountForgotPasswordURL = "http://www.undeadbrasil.com/?pagina=recuperar";
 	accountRegisterURL = "http://www.undeadbrasil.com/?pagina=cadastro";
 	//accountRegisterURL = "DoCreateAcc()";//test
 
 	myAccountURL = "http://www.undeadbrasil.com/";
 	forumsURL =  "http://forum.undeadbrasil.com/";
-	supportURL = "http://www.forum.doom-mmo.com/index.php?/forum/13-support/";
+	supportURL = "http://forum.undeadbrasil.com/";
 	youtubeURL = "http://youtube.com/";
 	facebookURL = "https://www.facebook.com/equipeundeadbrasil";
 	twitterURL = "http://twitter.com/";
