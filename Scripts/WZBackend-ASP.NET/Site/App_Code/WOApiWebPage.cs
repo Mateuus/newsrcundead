@@ -21,7 +21,7 @@ public abstract class WOApiWebPage : System.Web.UI.Page
     protected string LastIP = "0.0.0.0";
 
     protected GZIPResponse GResponse = new GZIPResponse();
-    protected string SERVER_API_KEY = "bvx425698dg6GsnxwedszF";
+    protected string SERVER_API_KEY = "a5gfd4u8df1jhjs47ws86F";
 
     abstract protected void Execute();
 
