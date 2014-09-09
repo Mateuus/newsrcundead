@@ -22,7 +22,7 @@ static unsigned antihackNotFound = 1;
 #include <stdio.h>
 #include <winsock2.h>
 #include <process.h>
-#include "C:/WarZ/Src/External/Fury/Fury/Fury.h"
+#include "C:/Undead/src/External/Fury/Fury/Fury.h"
 #endif
 #include "../SF/Console/EngineConsole.h"
 

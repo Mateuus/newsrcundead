@@ -3,7 +3,7 @@
 	function db_connect()
 	{
 		$db_user   = "ub_api_user";
-		$db_pass   = "";
+		$db_pass   = "shulE8TcAgMa26d";
 		$db_dbname = "Undead";
 
 		$db_serverName     = "localhost,11157";
