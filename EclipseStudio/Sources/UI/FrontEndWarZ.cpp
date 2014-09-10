@@ -2221,7 +2221,7 @@ void FrontendWarZ::eventRentServer(r3dScaleformMovie* pMovie, const Scaleform::G
 		   m_RentGameMapid = GBGameInfo::MAPID_CaliWood;
 		   break;
 	case 2:
-		   m_RentGameMapid = GBGameInfo::MAPID_Devmap;
+		   m_RentGameMapid = GBGameInfo::MAPID_WZ_Cliffside;
 		   break;
 	}
 
