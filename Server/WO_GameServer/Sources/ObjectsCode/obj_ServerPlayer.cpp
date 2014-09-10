@@ -2320,6 +2320,7 @@ void obj_ServerPlayer::UseItem_ApplyEffect(const PKT_C2C_PlayerUseItem_s& n, uin
 		case WeaponConfig::ITEMID_BlockEnergy:
 			UseItem_Barricade(n.pos, n.var1, itemID);
 			break;
+		case 301321:
 		case 101398:
 		case 101397:
 			break;

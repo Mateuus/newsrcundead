@@ -1882,7 +1882,7 @@ void HUDDisplay::addPlayerToList(int num, const char* name, int Reputation, bool
  var[3].SetString(algnmt);
  var[4].SetBoolean(isLegend);
  var[5].SetBoolean(isDev);
- var[6].SetBoolean(isPunisher);
+ var[6].SetBoolean(false);
  var[7].SetBoolean(isInvitePending);
  var[8].SetBoolean(false);
  var[9].SetBoolean(IsPremium);

@@ -831,6 +831,27 @@ void obj_Player::UpdateLoadoutSlot(const wiCharDataFull& slot)
 	else
 		uberEquip_->SetSlot(SLOT_Helmet, (Gear*)NULL);
 
+	if(NetworkLocal)//Mateuus Night
+	{
+			// ViruZ NVG Check
+					 if(CurLoadout.Items[wiCharDataFull::CHAR_LOADOUT_HEADGEAR].itemID == 20188 ||
+						CurLoadout.Items[wiCharDataFull::CHAR_LOADOUT_HEADGEAR].itemID == 20187 ||
+						CurLoadout.Items[wiCharDataFull::CHAR_LOADOUT_HEADGEAR].itemID == 20067
+						)
+					{
+						//r_hud_filter_mode->SetInt(0); // turn on NVG
+						//
+					}
+					else
+					{
+						if (r_hud_filter_mode->GetInt() == 1)
+						{
+							r_hud_filter_mode->SetInt(0);
+							hudMain->showMessage(gLangMngr.getString("Turn off NVG"));
+						}
+					}
+	}
+
 	// start loading meshes
 	for(int i=0; i<NUM_WEAPONS_ON_PLAYER; ++i)
 	{
