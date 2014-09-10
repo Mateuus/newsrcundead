@@ -1611,7 +1611,7 @@ void ServerGameLogic::NetRegisterObjectToPeers(GameObject* netObj)
 		if(dist < nh->distToCreateSq)
 		{
 #ifdef _DEBUG
-r3dOutToLog("NETHELPER: %s: on create - entered visibility of network object %d %s\n", peer.player->userName, netObj->GetNetworkID(), netObj->Name.c_str());
+//r3dOutToLog("NETHELPER: %s: on create - entered visibility of network object %d %s\n", peer.player->userName, netObj->GetNetworkID(), netObj->Name.c_str());
 #endif
 			r3d_assert(nh->PeerVisStatus[peerId] == 0);
 			nh->PeerVisStatus[peerId] = 1;
@@ -1643,7 +1643,7 @@ void ServerGameLogic::UpdateNetObjVisData(DWORD peerId, GameObject* netObj)
 		if(dist < nh->distToCreateSq)
 		{
 #ifdef _DEBUG
-r3dOutToLog("NETHELPER: %s: entered visibility of network object %d %s\n", peer.player->userName, netObj->GetNetworkID(), netObj->Name.c_str());
+//r3dOutToLog("NETHELPER: %s: entered visibility of network object %d %s\n", peer.player->userName, netObj->GetNetworkID(), netObj->Name.c_str());
 #endif
 			nh->PeerVisStatus[peerId] = 1;
 
@@ -1663,7 +1663,7 @@ r3dOutToLog("NETHELPER: %s: entered visibility of network object %d %s\n", peer.
 		if(dist > nh->distToDeleteSq)
 		{
 #ifdef _DEBUG
-r3dOutToLog("NETHELPER: %s: left visibility of network object %d %s\n", peer.player->userName, netObj->GetNetworkID(), netObj->Name.c_str());
+//r3dOutToLog("NETHELPER: %s: left visibility of network object %d %s\n", peer.player->userName, netObj->GetNetworkID(), netObj->Name.c_str());
 #endif
 			PKT_S2C_DestroyNetObject_s n;
 			n.spawnID = toP2pNetId(netObj->GetNetworkID());

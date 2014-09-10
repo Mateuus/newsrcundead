@@ -1565,7 +1565,7 @@ void FrontendWarZ::initFrontend()
 			var[2].SetStringW(gLangMngr.getString(skilldesc));
 			var[3].SetString(skill);
 			var[4].SetString(skillbw);
-			var[5].SetInt(100 + i * 10);
+			var[5].SetInt(1000 + i * 10);//Mateuus Skill
 			gfxMovie.Invoke("_root.api.addSkillInfo", var, 6);
 		}
 		/*if (gUserProfile.ProfileData.isDevAccount){ 
