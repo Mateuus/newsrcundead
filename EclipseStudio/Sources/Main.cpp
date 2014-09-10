@@ -307,7 +307,7 @@ void CloseRender()
 
 
 #ifdef FINAL_BUILD
-const char * g_szApplicationName = "WarZ";
+const char * g_szApplicationName = "Undead Brasil";
 #else
 const char * g_szApplicationName = "Eclipse Studio";
 #endif
