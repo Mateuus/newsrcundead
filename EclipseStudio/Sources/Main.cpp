@@ -1549,7 +1549,7 @@ void game::MainLoop()
 #ifndef FINAL_BUILD
 	case	Menu_AppSelect::bUpdateDB:
 		g_bEditMode = false;
-		UpdateDB("127.0.0.1", "Data/Weapons/itemsDB.xml");
+		UpdateDB("167.114.32.63", "Data/Weapons/itemsDB.xml");
 		MessageBox(0, "Successfully updated English DB!", "Result", MB_OK);
 		break;
 #endif

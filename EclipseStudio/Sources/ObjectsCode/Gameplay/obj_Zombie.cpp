@@ -738,6 +738,7 @@ void obj_Zombie::StartWalkAnim(bool run)
 	         if(!run && !CreateParams.FastZombie) {
 		             aid = AddAnimation("Super_Zombie_Walk_01");
 		             wsk = .8f; //2.2f;
+					 m_sndAttackHandle = SoundSys.Play(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/SUPER_ZOMBIE_SUPER_ATTACK"), GetPosition());//Mateuus Super Zombie
 	         } else if(!run && CreateParams.FastZombie) {
 		             aid = AddAnimation("Super_Zombie_Walk_01");
 		             wsk = 1.0f;

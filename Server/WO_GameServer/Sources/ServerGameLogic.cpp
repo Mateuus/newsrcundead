@@ -1104,7 +1104,7 @@ void ServerGameLogic::AddDirectPlayerReward(obj_ServerPlayer* plr, const wiStats
 
 
 
-	r3dOutToLog("reward: %s got %dxp %dgp %dgd RWD_%s\n", plr->userName, xp, gp, gd, rewardName ? rewardName : "");
+	//r3dOutToLog("reward: %s got %dxp %dgp %dgd RWD_%s\n", plr->userName, xp, gp, gd, rewardName ? rewardName : "");//Mateuus Report
 
 	// send it to him
 	PKT_S2C_AddScore_s n;
