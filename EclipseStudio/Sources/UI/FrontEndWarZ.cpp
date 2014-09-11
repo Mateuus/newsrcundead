@@ -1492,7 +1492,7 @@ void FrontendWarZ::initFrontend()
 
 	gfxMovie.Invoke("_root.api.setLanguage", g_user_language->GetString());
 	gfxMovie.SetVariable("_root.api.ChangeName_Price",100); // 100 is price
-	gfxMovie.SetVariable("_root.api.PremiumAccount_Price",3000); // premium account price
+	gfxMovie.SetVariable("_root.api.PremiumAccount_Price",30000); // premium account price
 	InitButtons();
 
 	if (gUserProfile.ProfileData.IsPremium){
