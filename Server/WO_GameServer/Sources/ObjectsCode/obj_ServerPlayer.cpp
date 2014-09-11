@@ -1295,6 +1295,10 @@ void obj_ServerPlayer::UpdateGameWorldFlags()
     if((((r3dGetTime() - startPlayTime_) <= 30.0f))) // 30 second spawn protection
         loadout_->GameFlags |= wiCharDataFull::GAMEFLAG_SpawnProtection;
 
+	if (loadout_->Health > 100)//Mateuus Fix Life
+	{
+		loadout_->Health = 100;
+	}
 	// scan for near postboxes
 	for(int i=0; i<gPostBoxesMngr.numPostBoxes_; i++)
 	{
