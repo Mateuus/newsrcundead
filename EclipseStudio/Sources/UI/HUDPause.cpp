@@ -293,9 +293,9 @@ void HUDPause::eventContextMenu_Action(r3dScaleformMovie* pMovie, const Scalefor
 			r_hud_filter_mode->SetInt(HUDFilter_Default);
 
 		plr->DropItem(slotID);
-		//plr->OnBackpackChanged(slotID);
+		plr->OnBackpackChanged(slotID);
 		updateSurvivorTotalWeight();
-		gfxMovie.Invoke("_root.api.backpackGridSwapSuccess", "");
+		//gfxMovie.Invoke("_root.api.backpackGridSwapSuccess", "");
 		return;
 		break;
 

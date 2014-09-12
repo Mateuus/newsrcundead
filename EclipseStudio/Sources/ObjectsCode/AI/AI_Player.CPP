@@ -578,8 +578,9 @@ void obj_Player::DropItem(int slotFrom)
 
 	int itemID = CurLoadout.Items[slotFrom].itemID;
 
-    if(itemID == 20188 || itemID == 20187 || itemID == 20067) // fix drop night vision
+   /* if(itemID == 20188 || itemID == 20187 || itemID == 20067) // fix drop night vision
             r_hud_filter_mode->SetInt(HUDFilter_Default);
+	*/
 	
 	//local logic
 	CurLoadout.Items[slotFrom].quantity--;
@@ -831,7 +832,8 @@ void obj_Player::UpdateLoadoutSlot(const wiCharDataFull& slot)
 	else
 		uberEquip_->SetSlot(SLOT_Helmet, (Gear*)NULL);
 
-	if(NetworkLocal)//Mateuus Night
+	//if(NetworkLocal)//Mateuus Night
+	if(NetworkLocal && !Mouse->GetMouseVisibility() && !bDead && !(g_pDefaultConsole && g_pDefaultConsole->IsVisible()) && !(hudMain && hudMain->isChatInputActive()))
 	{
 			// ViruZ NVG Check
 					 if(CurLoadout.Items[wiCharDataFull::CHAR_LOADOUT_HEADGEAR].itemID == 20188 ||
@@ -3793,12 +3795,12 @@ BOOL obj_Player::Update()
    if(!NetworkLocal) // for local already done in UpdateLocalPlayerMovement
 		parent::Update();
    
-   if (r_hud_filter_mode->GetInt()==HUDFilter_NightVision)
+   /*if (r_hud_filter_mode->GetInt()==HUDFilter_NightVision)
    {
 	   int itemID = CurLoadout.Items[7].itemID;
 	   if(itemID != 20188 && itemID != 20187 && itemID != 20067 ) // fix drop night vision
             r_hud_filter_mode->SetInt(HUDFilter_Default);
-   }
+   }*/
    if (NetworkLocal)
    {
 	int value = 0;

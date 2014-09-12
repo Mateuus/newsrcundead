@@ -1741,7 +1741,7 @@ void HUDDisplay::setLifeParams(int food, int water, int health, int toxicity, in
 void HUDDisplay::setWeaponInfo(int ammo, int clips, int firemode/*, int Durability*/)
 {
 	if(!Inited) return;
-	Scaleform::GFx::Value var[4];
+	Scaleform::GFx::Value var[3];//era 4
 	var[0].SetInt(ammo);
 	var[1].SetInt(clips);
 	if(firemode==1)
@@ -1751,7 +1751,7 @@ void HUDDisplay::setWeaponInfo(int ammo, int clips, int firemode/*, int Durabili
 	else
 		var[2].SetString("auto");
 		//var[3].SetInt(Durability);
-	gfxHUD.Invoke("_root.api.setWeaponInfo", var, 4);
+	gfxHUD.Invoke("_root.api.setWeaponInfo", var, 3);//era 4
 }
 
 void HUDDisplay::showWeaponInfo(int state)
