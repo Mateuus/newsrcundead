@@ -1683,13 +1683,9 @@ void ServerGameLogic::UpdateNetObjVisData(const obj_ServerPlayer* plr)
 	DWORD peerId = plr->peerId_;
 	//r3d_assert(peers_[peerId].player == plr);//Mateuus CrashFix
 
-	if (!plr) return; //Mateuus CrashFix
-
 	// scan for all objects and create/destroy them based on distance
 	for(GameObject* obj=GameWorld().GetFirstObject(); obj; obj=GameWorld().GetNextObject(obj))
 	{
-		if (!plr) return;
-
 		if(obj->GetNetworkID() == 0)
 			continue;
 		if(obj->ObjFlags & OBJFLAG_JustCreated)
@@ -1697,16 +1693,7 @@ void ServerGameLogic::UpdateNetObjVisData(const obj_ServerPlayer* plr)
 		if(!obj->isActive())
 			continue;
 
-		//UpdateNetObjVisData(peerId, obj);//Mateuus CrashFix
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		INetworkHelper* nh = obj->GetNetworkHelper();
-		if ((plr->GetPosition() - obj->GetPosition()).LengthSq() < nh->distToCreateSq && nh->PeerVisStatus[peerId] == 0)
-			//UpdateNetObjVisData(peerId,plr, obj);
-			UpdateNetObjVisData(peerId, obj);
-		else if ((plr->GetPosition() - obj->GetPosition()).LengthSq() > nh->distToDeleteSq && nh->PeerVisStatus[peerId] == 1)
-			//UpdateNetObjVisData(peerId,plr, obj);
-			UpdateNetObjVisData(peerId, obj);
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		UpdateNetObjVisData(peerId, obj);
 	}
 }
 
