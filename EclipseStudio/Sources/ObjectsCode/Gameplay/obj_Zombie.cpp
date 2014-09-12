@@ -255,6 +255,7 @@ obj_Zombie::obj_Zombie() :
 
 	bDead = false;
 	m_isFemale = false;
+	m_isSuperZombie = false; //Mateuus Super Zombie
 
 	ZombieSortEntry entry;
 
@@ -356,12 +357,27 @@ BOOL obj_Zombie::OnCreate()
 	UpdateAnimations();
 
 	m_isFemale = (CreateParams.HeroItemID == 20183);
+	m_isSuperZombie = (CreateParams.HeroItemID == 20204);//Mateuus Super Zombie
 
 	parent::OnCreate();
 
-	m_sndMaxDistIdle = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/ZOMBIE_IDLE_M"));
+	//m_sndIdleHandle = SoundSys.Play(SoundSys.GetEventIDByPath(m_isFemale?"Sounds/WarZ/Zombie sounds/ZOMBIE_IDLE_F":"Sounds/WarZ/Zombie sounds/ZOMBIE_IDLE_M"), GetPosition());
+	/*m_sndMaxDistIdle = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/ZOMBIE_IDLE_M"));
 	m_sndMaxDistChase = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/ZOMBIE_CHASING_M"));
-	m_sndMaxDistAttack = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/ZOMBIE_ATTACK_M"));
+	m_sndMaxDistAttack = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/ZOMBIE_ATTACK_M"));*/
+
+	
+	//Mateuus Super Zombie
+	if(m_isSuperZombie)
+	{
+	 m_sndMaxDistIdle = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/SUPER_ZOMBIE_ALERT"));
+	 m_sndMaxDistChase = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/SUPER_ZOMBIE_CHASING_FOOTSTEPS"));
+	 m_sndMaxDistAttack = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/SUPER_ZOMBIE_SUPER_ATTACK"));
+	}else{
+     m_sndMaxDistIdle = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/ZOMBIE_IDLE_M"));
+     m_sndMaxDistChase = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/ZOMBIE_CHASING_M"));
+     m_sndMaxDistAttack = SoundSys.getEventMax3DDistance(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/ZOMBIE_ATTACK_M"));
+	}
 	m_sndMaxDistAll = R3D_MAX(R3D_MAX(m_sndMaxDistIdle, m_sndMaxDistChase), m_sndMaxDistAttack);
 	m_sndIdleHandle = NULL;
 	m_sndChaseHandle = NULL;
@@ -409,7 +425,13 @@ void obj_Zombie::UpdateSounds()
 			if(m_sndAttackHandle) { SoundSys.Release(m_sndAttackHandle); m_sndAttackHandle = NULL;}
 			if(distToPlayer <= m_sndMaxDistIdle && !m_sndIdleHandle)
 			{
+				//Mateuus Super Zombie
+				if(m_isSuperZombie)
+				{
+				m_sndIdleHandle = SoundSys.Play(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/SUPER_ZOMBIE_IDLE"), GetPosition());
+				}else{
 				m_sndIdleHandle = SoundSys.Play(SoundSys.GetEventIDByPath(m_isFemale?"Sounds/WarZ/Zombie sounds/ZOMBIE_IDLE_F":"Sounds/WarZ/Zombie sounds/ZOMBIE_IDLE_M"), GetPosition());
+				}
 			}
 			else if(distToPlayer > m_sndMaxDistIdle && m_sndIdleHandle)
 			{
@@ -422,7 +444,14 @@ void obj_Zombie::UpdateSounds()
 			if(m_sndAttackHandle) { SoundSys.Release(m_sndAttackHandle); m_sndAttackHandle = NULL;}
 			if(distToPlayer <= m_sndMaxDistChase && !m_sndChaseHandle)
 			{
-				m_sndChaseHandle = SoundSys.Play(SoundSys.GetEventIDByPath(m_isFemale?"Sounds/WarZ/Zombie sounds/ZOMBIE_CHASING_F":"Sounds/WarZ/Zombie sounds/ZOMBIE_CHASING_M"), GetPosition());
+				//Mateuus Super Zombie
+				if(m_isSuperZombie)
+				{
+				m_sndChaseHandle = SoundSys.Play(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/SUPER_ZOMBIE_CHASING_SWIPING"), GetPosition());
+				}else{
+				m_sndChaseHandle = SoundSys.Play(SoundSys.GetEventIDByPath(m_isFemale?"Sounds/WarZ/Zombie sounds/ZOMBIE_IDLE_F":"Sounds/WarZ/Zombie sounds/ZOMBIE_IDLE_M"), GetPosition());
+				}
+				//m_sndChaseHandle = SoundSys.Play(SoundSys.GetEventIDByPath(m_isFemale?"Sounds/WarZ/Zombie sounds/ZOMBIE_CHASING_F":"Sounds/WarZ/Zombie sounds/ZOMBIE_CHASING_M"), GetPosition());
 			}
 			else if(distToPlayer > m_sndMaxDistChase && m_sndChaseHandle)
 			{
@@ -469,7 +498,14 @@ void obj_Zombie::PlayAttackSound()
 	if(!isSoundAudible())
 		return;
 
-	m_sndAttackHandle = SoundSys.Play(SoundSys.GetEventIDByPath(m_isFemale?"Sounds/WarZ/Zombie sounds/ZOMBIE_ATTACK_F":"Sounds/WarZ/Zombie sounds/ZOMBIE_ATTACK_M"), GetPosition());
+     //Mateuus Super Zombie
+	 if(m_isSuperZombie)
+		{
+			m_sndAttackHandle = SoundSys.Play(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/SUPER_ZOMBIE_SUPER_ATTACK"), GetPosition());
+		}else{
+			m_sndAttackHandle = SoundSys.Play(SoundSys.GetEventIDByPath(m_isFemale?"Sounds/WarZ/Zombie sounds/ZOMBIE_ATTACK_F":"Sounds/WarZ/Zombie sounds/ZOMBIE_ATTACK_M"), GetPosition());
+		}
+	//m_sndAttackHandle = SoundSys.Play(SoundSys.GetEventIDByPath(m_isFemale?"Sounds/WarZ/Zombie sounds/ZOMBIE_ATTACK_F":"Sounds/WarZ/Zombie sounds/ZOMBIE_ATTACK_M"), GetPosition());
 	m_sndAttackNextPlayTime = r3dGetTime() + m_sndAttackLength;
 }
 
@@ -733,12 +769,12 @@ void obj_Zombie::StartWalkAnim(bool run)
 {
 	int aid = 0;
 	float wsk = 1.0f;	// walk animtion speed coefficient
-	if (CreateParams.HeroItemID == 20204) {
-
+	 //Mateuus Super Zombie
+	 if(m_isSuperZombie)
+		{
 	         if(!run && !CreateParams.FastZombie) {
 		             aid = AddAnimation("Super_Zombie_Walk_01");
 		             wsk = .8f; //2.2f;
-					 m_sndAttackHandle = SoundSys.Play(SoundSys.GetEventIDByPath("Sounds/WarZ/Zombie sounds/SUPER_ZOMBIE_SUPER_ATTACK"), GetPosition());//Mateuus Super Zombie
 	         } else if(!run && CreateParams.FastZombie) {
 		             aid = AddAnimation("Super_Zombie_Walk_01");
 		             wsk = 1.0f;
@@ -944,7 +980,8 @@ void obj_Zombie::SetZombieState(int state, bool atStart)
 		case EZombieStates::ZState_Sleep:
 		{
 			int aid = 0;
-			if (CreateParams.HeroItemID == 20204) {
+			    //Mateuus Super Zombie
+			if(m_isSuperZombie){
 			            switch(u_random(2)) {
 				                default:
 				                case 0:	aid = AddAnimation("Super_Zombie_Dead_Stand_B_01"); break;
@@ -977,22 +1014,25 @@ void obj_Zombie::SetZombieState(int state, bool atStart)
 		{
 			// select new idle animation
 			int aid = 0;
-/*			if (CreateParams.HeroItemID == 20204) {
+			//Mateuus Super Zombie
+			if(m_isSuperZombie){
 			       switch(u_random(2)) {
 			            	default:
 			             	case 0:	aid = AddAnimation("Super_Zombie_Idle_01"); break;
 				            case 1:	aid = AddAnimation("Zombie_Idle_02"); break;
 			       }
 			}
-			else {*/
+			else {
 			       switch(u_random(2)) {
 			            	default:
 			             	case 0:	aid = AddAnimation("Zombie_Idle_01"); break;
 				            case 1:	aid = AddAnimation("Zombie_Idle_02"); break;
 			       }
-//		    }
-			if(u_random(10) == 0)
+		    }
+
+			 if(u_random(10) == 0)
 				aid = AddAnimation("Zombie_Eat_Crouched_01");
+		
 
 			int tr = anim_.StartAnimation(aid, ANIMFLAG_RemoveOtherFade | ANIMFLAG_Looped, 0.0f, 1.0f, 0.2f);
 
@@ -1015,10 +1055,42 @@ void obj_Zombie::SetZombieState(int state, bool atStart)
 			return;
 
 		case EZombieStates::ZState_Attack:
-		case EZombieStates::ZState_BarricadeAttack:
+						{
 			// select new attack animation
 			int aid = 0;
-			if (CreateParams.HeroItemID == 20204) {
+			////////////////////////////////////////////////////////////
+            //Mateuus Super Zombie
+	         if(m_isSuperZombie)
+		     {
+			 switch(u_random(6)) {
+			         default:
+			         case 0:	aid = AddAnimation("Super_Zombie_Bite_Attack_1"); break;
+				     case 1:	aid = AddAnimation("Super_Zombie_Super_Attack_V2"); break;
+					 case 2:	aid = AddAnimation("Super_Zombie_Swing_Attack01"); break;
+				     case 3:	aid = AddAnimation("Super_Zombie_Swing_Attack02"); break;
+					 case 4:	aid = AddAnimation("Super_Zombie_Swing_Attack03"); break;
+					 case 5:	aid = AddAnimation("Super_Zombie_Super_Attack_V1"); break;
+			       }
+			}
+			else {
+			switch(u_random(2)) {
+				default:
+				case 0:	aid = AddAnimation("Zombie_Bite_Attack_1"); break;
+				case 1:	aid = AddAnimation("Zombie_Swing_Attack03"); break;
+			  } 
+			}
+			attackTrack = anim_.StartAnimation(aid, ANIMFLAG_RemoveOtherFade | ANIMFLAG_Looped, 0.0f, 1.0f, 0.2f);
+
+			SetVelocity(r3dPoint3D(0, 0, 0));
+			break;
+			}
+		case EZombieStates::ZState_BarricadeAttack:
+          {
+			// select new attack animation
+			int aid = 0;
+			////////////////////////////////////////////////////////////////////////////////////////////////
+			//Mateuus Super Zombie
+	        if(m_isSuperZombie){
 			             switch(u_random(2)) {
 				                    default:
 				                    case 0:	aid = AddAnimation("Super_Zombie_Swing_Attack01"); break;
@@ -1026,16 +1098,19 @@ void obj_Zombie::SetZombieState(int state, bool atStart)
 			              }
 			}
 			else {
-			             switch(u_random(2)) {
-				                    default:
-				                    case 0:	aid = AddAnimation("Zombie_Swing_Attack01"); break;
-				                    case 1:	aid = AddAnimation("Zombie_Swing_Attack02"); break;
-			              }
-		    }
+			/////////////////////////////////////////////////////////////////////////////////////////////////
+			switch(u_random(3)) {
+				default:
+				case 0:	aid = AddAnimation("Zombie_Swing_Attack01"); break;
+				case 1:	aid = AddAnimation("Zombie_Swing_Attack02"); break;
+				case 2:	aid = AddAnimation("Zombie_Swing_Attack03"); break;
+			   }
+			}
 			attackTrack = anim_.StartAnimation(aid, ANIMFLAG_RemoveOtherFade | ANIMFLAG_Looped, 0.0f, 1.0f, 0.2f);
 
 			SetVelocity(r3dPoint3D(0, 0, 0));
 			break;
+		}
 	}
 }
 
@@ -1073,7 +1148,8 @@ void obj_Zombie::OnNetPacket(const PKT_C2C_MoveRel_s& n)
 	if(md.state == 1 && !staggeredTrack)
 	{
 
-		if (CreateParams.HeroItemID == 20204) {
+		  //Mateuus Super Zombie
+		if(m_isSuperZombie){
 		static const char* anims[] = {
 			"Super_Zombie_Staggered_01_B",
 			"Super_Zombie_Staggered_01_L",

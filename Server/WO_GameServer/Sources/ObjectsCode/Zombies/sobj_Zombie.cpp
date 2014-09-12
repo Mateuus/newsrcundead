@@ -31,6 +31,7 @@ AUTOREGISTER_CLASS(obj_Zombie);
 	float		_zai_PlayerSpawnProtect  = 0.0f;
 	float		_zai_MaxSpawnDelay       = 0.1f;
 	float		_zai_AttackDamage        = 0.0f;
+	float		_zai_SZAttackDamage        = 0.0f; //Mateuus Super Zombie
 	int		_zai_DebugAI             = 1;
 #else
 	int		_zai_DisableDetect       = 0;
@@ -39,12 +40,13 @@ AUTOREGISTER_CLASS(obj_Zombie);
 	float		_zai_PlayerSpawnProtect  = 35.0f;	// radius where zombie won't be spawned because of player presense
 	float		_zai_MaxSpawnDelay       = 9999.0f;
 	float		_zai_AttackDamage        = 23.0f;
+	float		_zai_SZAttackDamage        = 69.0f; //Mateuus Super Zombie
 	int		_zai_DebugAI             = 0;
 #endif
 	float		_zai_MaxPatrolDistance   = 30.0f;	// distance to search for navpoints when switchint to patrol
 	float		_zai_MaxPursueDistance   = 300.0f;
 	float		_zai_AttackRadius        = 1.2f;
-	float		_zai_SZAttackTimer		 = 0.3f;	// Super Zombie Attack Speed
+	float		_zai_SZAttackTimer		 = 0.3f;	//Mateuus Super Zombie
 	float		_zai_AttackTimer         = 1.2f;
 	float		_zai_DistToRecalcPath    = 0.8f; // _zai_AttackRadius / 2
 	float		_zai_VisionConeCos       = cosf(50.0f); // have 100 degree vision
@@ -125,8 +127,16 @@ BOOL obj_Zombie::OnCreate()
 	WalkSpeed  = FastZombie ? 1.0f : 1.8f;
 	RunSpeed   = FastZombie ? 2.9f : 3.2f;
 
-	WalkSpeed += WalkSpeed * u_GetRandom(-spawnObject->speedVariation, +spawnObject->speedVariation);
-	RunSpeed  += RunSpeed  * u_GetRandom(-spawnObject->speedVariation, +spawnObject->speedVariation);
+	//WalkSpeed += WalkSpeed * u_GetRandom(-spawnObject->speedVariation, +spawnObject->speedVariation);
+	//RunSpeed  += RunSpeed  * u_GetRandom(-spawnObject->speedVariation, +spawnObject->speedVariation);
+
+	if (HeroItemID == 20204)//Mateuus Super Zombie
+	{
+		WalkSpeed += WalkSpeed * u_GetRandom(-spawnObject->speedVariation, +spawnObject->speedVariation);
+		RunSpeed  += RunSpeed  * u_GetRandom(-spawnObject->speedVariation, +spawnObject->speedVariation);
+		ZombieHealth = u_GetRandom(200.0f, 400.0f);
+		r3dOutToLog("SuperZombie Spawned\n");
+	}
 
 	r3d_assert(WalkSpeed > 0);
 	r3d_assert(RunSpeed > 0);
@@ -412,6 +422,7 @@ bool obj_Zombie::CheckForBarricadeBlock()
 
 		// found barricade, wreck it!
 		hardObjLock = shield->GetSafeID();
+		//Mateuus Super Zombie
 		if (HeroItemID == 20204)
 		attackTimer = _zai_SZAttackTimer / 2;
 		else
@@ -956,6 +967,7 @@ BOOL obj_Zombie::Update()
 				{
 					StopNavAgent();
 					SwitchToState(EZombieStates::ZState_Attack);
+					//Mateuus Super Zombie
 					if (HeroItemID == 20204)
 					attackTimer   = _zai_SZAttackTimer / 2;
 					else
@@ -1079,8 +1091,37 @@ BOOL obj_Zombie::Update()
 					gServerLogic.p2pBroadcastToActive(this, &n, sizeof(n));
 
 					// temp code for applying damage from zombie to player
-					trg->loadout_->Health -= _zai_AttackDamage;
+						///////////////////////////////////////////////////////////////////////
+						//Mateuus Super Zombie
+					    if (trg->profile_.ProfileData.IsPremium || trg->profile_.ProfileData.isDevAccount)
+						{
+							////////////////////////////////////////
+							//Codex Super Zombie
+							if (HeroItemID == 20204)
+							{
+                               _zai_SZAttackDamage = 58.0f;
+							}
+							else
+							{
+							/////////////////////////////////////
+							   _zai_AttackDamage = 15.0f;
+							}
+						}
 
+					    ////////////////////////////////////////////
+						//Mateuus Super Zombie
+						if (HeroItemID == 20204)
+						 {
+                               trg->loadout_->Health -= _zai_SZAttackDamage;
+						 }
+						else
+						 {
+						////////////////////////////////////////////
+							   trg->loadout_->Health -= _zai_AttackDamage;
+						 }
+
+					    ///////////////////////////////////////////////////////////////////////
+						//Mateuus Super Zombie
 						if(HeroItemID == 20204)
 						{
 							if(u_GetRandom(0.0f, 100.0f) < 20.0f) // chance of infecting
@@ -1088,7 +1129,7 @@ BOOL obj_Zombie::Update()
 								trg->loadout_->Toxic += 1.0f;
 							}
 						}else{
-
+                        ////////////////////////////////////////////////////////////////////////
 							if(u_GetRandom(0.0f, 100.0f) < 7.0f) // chance of infecting
 							{
 								trg->loadout_->Toxic += 1.0f;
@@ -1140,12 +1181,27 @@ BOOL obj_Zombie::Update()
 			}
 
 			attackTimer += r3dGetFrameTime();
+			 ////////////////////////////////////////
+			//Mateuus Super Zombie
+			if (HeroItemID == 20204)
+			{
+			if(attackTimer >= _zai_SZAttackTimer)
+			{
+				attackTimer = 0;
+				shield->DoDamage(_zai_SZAttackDamage);
+			}
+			break;      
+			}
+			else
+			{
+			/////////////////////////////////////
 			if(attackTimer >= _zai_AttackTimer)
 			{
 				attackTimer = 0;
 				shield->DoDamage(_zai_AttackDamage);
 			}
 			break;
+		  }
 		}
 
 		case EZombieStates::ZState_Dead:
@@ -1259,7 +1315,7 @@ void obj_Zombie::DoDeath()
 	extern wiInventoryItem RollItem(const LootBoxConfig* lootCfg, int depth);
 
 	// drop loot
-	if(spawnObject->lootBoxCfg)
+	if(spawnObject->lootBoxCfg && HeroItemID != 20204) //Mateuus Super Zombie
 	{
 		wiInventoryItem wi = RollItem(spawnObject->lootBoxCfg, 0);
 		if(wi.itemID > 0)
@@ -1279,6 +1335,36 @@ void obj_Zombie::DoDeath()
 			obj->m_Item       = wi;
 		}
 	}
+
+////////////////////////////////////////////////////////////////////
+//Mateuus Super Zombie
+if(HeroItemID == 20204)
+	{
+		for(int i=0; i<10; i++)
+		{
+			if(spawnObject->lootBoxCfg)
+			{
+				wiInventoryItem wi = RollItem(spawnObject->lootBoxCfg, 0);
+				if(wi.itemID > 0)
+				{
+					// create random position around zombie
+					r3dPoint3D pos = GetPosition();
+					pos.y += 0.4f;
+					pos.x += u_GetRandom(-1, 1);
+					pos.z += u_GetRandom(-1, 1);
+
+					// create network object
+					obj_DroppedItem* obj = (obj_DroppedItem*)srv_CreateGameObject("obj_DroppedItem", "obj_DroppedItem", pos);
+					obj->SetNetworkID(gServerLogic.GetFreeNetId());
+					obj->NetworkLocal = true;
+					// vars
+					obj->m_Item       = wi;
+				}
+			}
+
+		}
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	if(HalloweenZombie && u_GetRandom() < 0.3f) // 30% to drop that helmet
 	{
