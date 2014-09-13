@@ -1738,10 +1738,10 @@ void HUDDisplay::setLifeParams(int food, int water, int health, int toxicity, in
 	gfxHUD.Invoke("_root.api.setHeroCondition", var, 5);
 }
 
-void HUDDisplay::setWeaponInfo(int ammo, int clips, int firemode/*, int Durability*/)
+void HUDDisplay::setWeaponInfo(int ammo, int clips, int firemode/*, int Durability*/)//TEM QUE ATIVA NA FRONTEND :)
 {
 	if(!Inited) return;
-	Scaleform::GFx::Value var[4];
+	Scaleform::GFx::Value var[3];
 	var[0].SetInt(ammo);
 	var[1].SetInt(clips);
 	if(firemode==1)
@@ -1750,9 +1750,10 @@ void HUDDisplay::setWeaponInfo(int ammo, int clips, int firemode/*, int Durabili
 		var[2].SetString("three");
 	else
 		var[2].SetString("auto");
-	    var[3].SetInt(false);
-	//var[3].SetInt(Durability);
-	gfxHUD.Invoke("_root.api.setWeaponInfo", var, 4);
+	   // var[3].SetInt(false);
+	   // var[3].SetInt(Durability);
+	gfxHUD.Invoke("_root.api.setWeaponInfo", var, 3);
+	//r3dOutToLog("###### FIRE MODE %i\n",firemode);
 }
 
 void HUDDisplay::showWeaponInfo(int state)

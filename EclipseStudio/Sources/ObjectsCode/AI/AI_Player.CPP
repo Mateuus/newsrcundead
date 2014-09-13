@@ -4434,9 +4434,11 @@ BOOL obj_Player::Update()
 				{
 					const wiInventoryItem& wi = m_Weapons[m_SelectedWeapon]->getPlayerItem();
 					//hudMain->setWeaponInfo(R3D_MIN(1, wi.quantity), R3D_MIN(0, wi.quantity-1), 1/*,wi.Durability*/);
+					hudMain->setWeaponInfo(R3D_MIN(1, wi.quantity), R3D_MIN(0, wi.quantity-1), 1);
 				}
 				else
-					hudMain->setWeaponInfo(m_Weapons[m_SelectedWeapon]->getNumBulletsLeft(), m_Weapons[m_SelectedWeapon]->getNumClipsLeft(), (int)m_Weapons[m_SelectedWeapon]->getFiremode()/*,m_Weapons[m_SelectedWeapon]->getPlayerItem().Durability*/);
+					//hudMain->setWeaponInfo(m_Weapons[m_SelectedWeapon]->getNumBulletsLeft(), m_Weapons[m_SelectedWeapon]->getNumClipsLeft(), (int)m_Weapons[m_SelectedWeapon]->getFiremode()/*,m_Weapons[m_SelectedWeapon]->getPlayerItem().Durability*/);
+					  hudMain->setWeaponInfo(m_Weapons[m_SelectedWeapon]->getNumBulletsLeft(), m_Weapons[m_SelectedWeapon]->getNumClipsLeft(), (int)m_Weapons[m_SelectedWeapon]->getFiremode());
 			}
 
 			if(r3dGetTime() > showSlotsInfoTimer && showSlotsInfoTimer>0)
@@ -7499,11 +7501,11 @@ void obj_Player::updateWeaponUI()
 			isMelee = true;
 		if(!forcedEmptyHands && ((m_SelectedWeapon < 2 && !isMelee && m_Weapons[m_SelectedWeapon]) || (m_SelectedWeapon>=2 && m_Weapons[m_SelectedWeapon] && m_Weapons[m_SelectedWeapon]->getCategory() == storecat_GRENADE)))
 		{
-			if (m_Weapons[m_SelectedWeapon]->getItemID() != WeaponConfig::ITEMID_ClayMore)
+			/*if (m_Weapons[m_SelectedWeapon]->getItemID() != WeaponConfig::ITEMID_ClayMore)
 				hudMain->showWeaponInfo(true);
-			else
-				hudMain->showWeaponInfo(false);
-
+			else*/
+				//hudMain->showWeaponInfo(false);
+			      hudMain->showWeaponInfo(true);
 		}
 		else
 		{

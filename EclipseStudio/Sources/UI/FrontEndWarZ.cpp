@@ -2558,6 +2558,8 @@ void FrontendWarZ::eventRequestGCTransactionData(r3dScaleformMovie* pMovie, cons
             strcpy(name,"$FR_EarlyRevival");
         else if (strcmp(TransactionID, "ConvertGCToGD")==0)
             strcpy(name,"$FR_CONVERT_GC_TO_GD");
+		else if (strcmp(TransactionID, "PREMIUM")==0)
+            strcpy(name,"Compra de Premium 30 dias");
         var[2].SetStringW(gLangMngr.getString(name)); // name
 		
         var[3].SetString("1"); // amount
