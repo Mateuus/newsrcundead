@@ -664,14 +664,16 @@ void applyGraphicOptionsSoft( uint32_t settingsFlags )
 
 		switch( r_shadows_quality->GetInt() )
 		{
-		case 1:
+		case 1://Mateuus Fix FPS
 			r_transp_shadows->SetInt( 0 ) ;
 			r_terra_shadows->SetInt( 0 );
-			r_shadow_blur->SetInt( 1 );
+			//r_shadow_blur->SetInt( 1 );
+			r_shadow_blur->SetInt( 0 );
 			r_dir_sm_size->SetInt( MAX_DIR_TEX_SIZE );
 			r_shared_sm_size->SetInt( 1024 );
 			r_shared_sm_cube_size->SetInt( 1024 );
-			r_active_shadow_slices->SetInt( NumShadowSlices - 1 );
+			//r_active_shadow_slices->SetInt( NumShadowSlices - 1 );
+			r_active_shadow_slices->SetInt( NumShadowSlices - 2 );
 			r_shadows->SetInt( 1 );
 			r_dd_pointlight_shadows->SetInt( 0 );
 			ShadowSplitDistancesOpaque = &ShadowSplitDistancesOpaqueLow[0];
@@ -680,7 +682,8 @@ void applyGraphicOptionsSoft( uint32_t settingsFlags )
 		case 2:
 			r_transp_shadows->SetInt( 0 ) ;
 			r_terra_shadows->SetInt( 1 );
-			r_shadow_blur->SetInt( 1 );
+			//r_shadow_blur->SetInt( 1 );
+			r_shadow_blur->SetInt( 0 );
 			r_dir_sm_size->SetInt( MAX_DIR_TEX_SIZE );
 			r_shared_sm_size->SetInt( 1024 );
 			r_shared_sm_cube_size->SetInt( 512 );
@@ -988,10 +991,10 @@ void readGameOptionsFile()
 {
 	r_ini_read->SetBool( true );
 
-/*#ifdef FINAL_BUILD
+#ifdef FINAL_BUILD
 	// before reading ini to allow geeks to override it
 	r_limit_fps->SetInt( 60 );
-#endif*/
+#endif
 
 	// try local first
 	if( !r3d_access( "./" INI_FILE, 4 ) )

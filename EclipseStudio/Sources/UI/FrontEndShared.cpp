@@ -115,7 +115,7 @@ void FillDefaultSettings( GraphicSettings& settings, r3dDevStrength strength )
 {
 	switch( strength )
 	{
-	case S_WEAK:
+	/*case S_WEAK:
 		settings.mesh_quality			= 1;
 		settings.texture_quality		= 1;
 		settings.terrain_quality		= 1;
@@ -173,7 +173,70 @@ void FillDefaultSettings( GraphicSettings& settings, r3dDevStrength strength )
 		settings.anisotropy_quality		= 4;
 		settings.postprocess_quality	= 3;
 		settings.ssao_quality			= 4;
+		break;*/
+
+		//Mateuus Fix FPS
+		case S_WEAK:
+		settings.mesh_quality			= 2;
+		settings.texture_quality		= 2;
+		settings.terrain_quality		= 1;
+		settings.water_quality			= 1;
+		settings.shadows_quality		= 1;
+		settings.lighting_quality		= 1;
+		settings.particles_quality		= 1;
+		settings.decoration_quality		= 1;
+		//settings.antialiasing_quality	= 1;
+		settings.anisotropy_quality		= 2;
+		settings.postprocess_quality	= 1;
+		settings.ssao_quality			= 1;
 		break;
+
+	case S_MEDIUM:
+		settings.mesh_quality			= 2;
+		settings.texture_quality		= 2;
+		settings.terrain_quality		= 2;
+		settings.water_quality			= 2;
+		settings.shadows_quality		= 2;
+		settings.lighting_quality		= 2;
+		settings.particles_quality		= 2;
+		settings.decoration_quality		= 2;
+		//settings.antialiasing_quality	= 1;
+		settings.anisotropy_quality		= 2;
+		settings.postprocess_quality	= 1;
+		settings.ssao_quality			= 2;
+		break;
+
+	case S_STRONG:
+		settings.mesh_quality			= 3;
+		settings.texture_quality		= 3;
+		settings.terrain_quality		= 3;
+		settings.water_quality			= 3;
+		settings.shadows_quality		= 3;
+		settings.lighting_quality		= 3;
+		settings.particles_quality		= 3;
+		settings.decoration_quality		= 3;
+		//settings.antialiasing_quality	= 1;
+		settings.anisotropy_quality		= 3;
+		settings.postprocess_quality	= 2;
+		settings.ssao_quality			= 3;
+		break;
+
+	case S_ULTRA:
+		settings.mesh_quality			= 3;
+		settings.texture_quality		= 3;
+		settings.terrain_quality		= 3;
+		settings.water_quality			= 3;
+		settings.shadows_quality		= 4;
+		settings.lighting_quality		= 3;
+		settings.particles_quality		= 4;
+		settings.decoration_quality		= 3;
+		//settings.antialiasing_quality	= 1;
+		settings.anisotropy_quality		= 4;
+		settings.postprocess_quality	= 3;
+		settings.ssao_quality			= 4;
+		break;
+
+
 
 	default:
 		r3dError( "SetDefaultSettings: unknown strength..." );
