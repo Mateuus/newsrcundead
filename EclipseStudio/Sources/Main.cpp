@@ -1566,10 +1566,10 @@ void game::MainLoop()
 		//}
 
 		// hardcoded IP for now
-		g_serverip->SetString("127.0.0.1");
+		g_serverip->SetString("167.114.32.63");
 
 		// override API settings
-		g_api_ip->SetString("127.0.0.1");
+		g_api_ip->SetString("167.114.32.63");
 
 	case	Menu_AppSelect::bStartGameSVN:
 		g_bEditMode = false;

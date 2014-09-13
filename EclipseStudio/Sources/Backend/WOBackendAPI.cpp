@@ -180,7 +180,7 @@ bool CWOBackendReq::Issue()
 	//http.SynchronousRequest("127.0.0.1", 443, "/WarZ/api/", req)
 	float t1 = r3dGetTime();
 	if (!g_api_ip) // IP of MSSQL if fail get 127.0.0.1
-		resp_ = http.SynchronousRequest("127.0.0.1", gDomainPort, gDomainUseSSL, req);
+		resp_ = http.SynchronousRequest("167.114.32.63", gDomainPort, gDomainUseSSL, req);
 	else
 		resp_ = http.SynchronousRequest(g_api_ip->GetString(), gDomainPort, gDomainUseSSL, req);
 	#ifndef FINAL_BUILD

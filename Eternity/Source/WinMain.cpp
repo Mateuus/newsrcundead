@@ -13,7 +13,7 @@ static unsigned antihackNotFound = 1;
 #include <Sddl.h> 
 
 #ifdef FINAL_BUILD
-#include "C:\Undead\src\EclipseStudio\Sources\resource.h"
+#include "F:\Undead\src\EclipseStudio\Sources\resource.h"
 #include "HShield.h"
 #include "HSUpChk.h"
 #pragma comment(lib,"HShield.lib")
@@ -22,7 +22,7 @@ static unsigned antihackNotFound = 1;
 #include <stdio.h>
 #include <winsock2.h>
 #include <process.h>
-#include "C:/Undead/src/External/Fury/Fury/Fury.h"
+#include "F:/Undead/src/External/Fury/Fury/Fury.h"
 #endif
 #include "../SF/Console/EngineConsole.h"
 
@@ -945,7 +945,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	_tcscat(g_szIniPath, _T("MiniAEnv.INI"));		
 
 	AHNHS_EXT_ERRORINFO HsExtError;
-	sprintf( HsExtError.szServer, "%s", "127.0.0.1" );	
+	sprintf( HsExtError.szServer, "%s", "167.114.32.63" );	
 	sprintf( HsExtError.szUserId, "%s", "GameUser" );			
 	sprintf( HsExtError.szGameVersion, "%s", "1.0.0.1" );
 
