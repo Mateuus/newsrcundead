@@ -1098,18 +1098,22 @@ int FrontendWarZ::Update()
 			gTimeWhenProfileLoaded = 1;
 		}
 
+		timeToReviveInSec *= 2;
 		Scaleform::GFx::Value var[3];
 
 		int timeLeftToRevive = R3D_MAX(gUserProfile.ProfileData.ArmorySlots[gUserProfile.SelectedCharID].SecToRevive - int(r3dGetTime() - gTimeWhenProfileLoaded), 0);
+
 		if (gUserProfile.ProfileData.isDevAccount)
 			var[0].SetInt(0);
 		else
 			var[0].SetInt(timeLeftToRevive);
 		int perc = 100-int((float(timeLeftToRevive)/float(timeToReviveInSec))*100.0f);
+
 		if (gUserProfile.ProfileData.isDevAccount)
 			var[1].SetInt(0);
 		else
 			var[1].SetInt(perc);
+
 //#ifdef FINAL_BUILD
 //		var[2].SetBoolean(timeLeftToRevive==0);
 //#else
